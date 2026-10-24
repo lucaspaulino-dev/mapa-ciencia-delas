@@ -50,6 +50,7 @@ if (!tentar(`rev-parse -q --verify refs/tags/${tag}`).ok) {
 
 const ramoAtual = tentar('branch --show-current').saida || 'HEAD'
 const alterado = tentar('status --porcelain').saida !== ''
+let guardadoNoStash = false
 
 if (alterado) {
   tentar('add -A')
@@ -60,7 +61,7 @@ if (alterado) {
       console.error('Não consegui guardar o seu trabalho. Nada foi alterado.\n' + stash.saida)
       process.exit(1)
     }
-    console.log('Seu trabalho foi guardado no stash. Para recuperar depois: git stash pop')
+    guardadoNoStash = true
   }
 }
 
@@ -74,5 +75,9 @@ if (!troca.ok) {
 }
 
 console.log(`Pronto: você está na ${tag}, no ramo ${novoRamo}.`)
-if (alterado) console.log(`Seu trabalho anterior continua no ramo ${ramoAtual}.`)
+if (guardadoNoStash) {
+  console.log('Seu trabalho anterior foi guardado no stash. Para recuperar: git stash list e git stash pop')
+} else if (alterado) {
+  console.log(`Seu trabalho anterior foi salvo num commit no ramo ${ramoAtual}.`)
+}
 console.log('Se o package.json mudou, rode npm install antes de continuar.')
