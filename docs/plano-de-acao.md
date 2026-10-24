@@ -4,12 +4,12 @@
 Na página inicial, quem visita busca uma cientista pelo nome, filtra por área e por país e sabe na hora quantas cientistas combinam com a busca.
 
 ## Aceite
-- [ ] Digitar no campo de busca filtra os cards pelo nome, sem diferenciar acentos — verifica: `npm run test:unit -- --run` (HomeView.spec)
-- [ ] Os filtros de área e de país listam só valores que existem nos dados, com rótulo legível, e filtram os cards — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
-- [ ] Todo campo de filtro tem `<label>` associado ao campo — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
-- [ ] O botão "Limpar filtros" aparece só quando há filtro ativo e volta à lista completa — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
-- [ ] Uma região `aria-live="polite"` anuncia quantas cientistas estão sendo mostradas — verifica: `npm run test:unit -- --run` (HomeView.spec)
-- [ ] Sem resultado, aparece "Nenhuma cientista encontrada com esses filtros." — verifica: `npm run test:unit -- --run` (ScientistList.spec)
+- [x] Digitar no campo de busca filtra os cards pelo nome, sem diferenciar acentos — verifica: `npm run test:unit -- --run` (HomeView.spec)
+- [x] Os filtros de área e de país listam só valores que existem nos dados, com rótulo legível, e filtram os cards — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
+- [x] Todo campo de filtro tem `<label>` associado ao campo — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
+- [x] O botão "Limpar filtros" aparece só quando há filtro ativo e volta à lista completa — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
+- [x] Uma região `aria-live="polite"` anuncia quantas cientistas estão sendo mostradas — verifica: `npm run test:unit -- --run` (HomeView.spec)
+- [x] Sem resultado, aparece "Nenhuma cientista encontrada com esses filtros." — verifica: `npm run test:unit -- --run` (ScientistList.spec)
 - [ ] Tudo funciona só com teclado — verifica: manual, `npm run dev` e navegar a página com Tab, Shift+Tab, setas e Enter
 
 ## Fora de escopo

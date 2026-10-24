@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import ScientistCard from '@/components/ScientistCard.vue'
+import { computed } from 'vue'
+
+import ScientistFilters from '@/components/ScientistFilters.vue'
+import ScientistList from '@/components/ScientistList.vue'
 import { useCientistasStore } from '@/stores/cientistas'
 
 const store = useCientistasStore()
+
+const contagem = computed(() => {
+  const total = store.cientistasFiltradas.length
+  return total === 1 ? '1 cientista encontrada' : `${total} cientistas encontradas`
+})
 </script>
 
 <template>
@@ -12,11 +20,9 @@ const store = useCientistasStore()
       Mulheres que mudaram a ciência e a tecnologia, com informação correta e fonte para cada fato.
     </p>
 
-    <ul class="home__lista">
-      <li v-for="cientista in store.cientistas" :key="cientista.id">
-        <ScientistCard :cientista="cientista" />
-      </li>
-    </ul>
+    <ScientistFilters />
+    <p class="home__contagem" aria-live="polite">{{ contagem }}</p>
+    <ScientistList :cientistas="store.cientistasFiltradas" />
   </section>
 </template>
 
@@ -31,12 +37,8 @@ const store = useCientistasStore()
   font-size: 1.125rem;
 }
 
-.home__lista {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0 0;
-  padding: 0;
-  list-style: none;
+.home__contagem {
+  margin: 0 0 1rem;
+  color: var(--cor-texto-suave);
 }
 </style>
