@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ScientistCard from '@/components/ScientistCard.vue'
-import { cientistas } from '@/data/cientistas'
+import { useCientistasStore } from '@/stores/cientistas'
+
+const store = useCientistasStore()
 </script>
 
 <template>
@@ -11,7 +13,7 @@ import { cientistas } from '@/data/cientistas'
     </p>
 
     <ul class="home__lista">
-      <li v-for="cientista in cientistas" :key="cientista.id">
+      <li v-for="cientista in store.cientistas" :key="cientista.id">
         <ScientistCard :cientista="cientista" />
       </li>
     </ul>

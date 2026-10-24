@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { createRouter, createMemoryHistory } from 'vue-router'
+import { createPinia } from 'pinia'
 
 import App from '@/App.vue'
 import HomeView from '@/views/HomeView.vue'
@@ -14,7 +15,7 @@ describe('App', () => {
     router.push('/')
     await router.isReady()
 
-    const wrapper = mount(App, { global: { plugins: [router] } })
+    const wrapper = mount(App, { global: { plugins: [router, createPinia()] } })
 
     expect(wrapper.find('header').text()).toContain('Mapa Ciência Delas')
     expect(wrapper.find('main h1').text()).toBe('Mapa Ciência Delas')
