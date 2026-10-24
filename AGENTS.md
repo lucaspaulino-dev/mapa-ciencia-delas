@@ -1,0 +1,30 @@
+# AGENTS.md: Mapa Ciência Delas
+
+Aplicação Vue que lista mulheres cientistas com fonte para cada fato e interface acessível.
+
+## Stack
+Vue 3 + TypeScript estrito + Pinia + Vue Router + Vitest. Sem bibliotecas de UI nem frameworks de CSS.
+
+## Regras de negócio
+Leia `docs/regras-de-negocio.md` antes de mudar comportamento. Não copie as regras para cá.
+
+## Convenções
+- Componentes em inglês e PascalCase (`ScientistCard.vue`); domínio em português (tipos, dados, store).
+- Tipos em `src/types/<nome>.type.ts`; dados em `src/data/`.
+- Dados e filtros das cientistas em `useCientistasStore` (`src/stores/cientistas.ts`).
+- `<script setup lang="ts">`, props tipadas com JSDoc, sem desestruturar `defineProps()`.
+- CSS `scoped` com BEM; cores e espaços das variáveis de `src/assets/base.css`.
+- Imports com `@/`, nunca `../`.
+- Todo componente novo tem teste em `__tests__/` ao lado.
+
+## Antes de concluir qualquer tarefa
+Rode `npm run verificar` (type-check, testes e lint) e mostre o resultado.
+
+## Testes
+Rode com `npm run test:unit -- --run`. Sem `--run`, o Vitest fica em modo watch e não termina.
+
+## Proibido
+- `any`.
+- Adicionar dependência sem perguntar.
+- Editar `docs/regras-de-negocio.md`, `eslint.config.ts` ou `.oxlintrc.json`.
+- Alterar um teste só para ele passar.
