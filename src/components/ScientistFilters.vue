@@ -37,7 +37,7 @@ const pais = computed({
     </div>
 
     <div class="scientist-filters__campo">
-      <label class="scientist-filters__rotulo">Área</label>
+      <label class="scientist-filters__rotulo" for="filtro-area">Área</label>
       <select id="filtro-area" v-model="area" class="scientist-filters__controle">
         <option value="">Todas as áreas</option>
         <option v-for="opcao in store.areas" :key="opcao" :value="opcao">
@@ -47,7 +47,7 @@ const pais = computed({
     </div>
 
     <div class="scientist-filters__campo">
-      <label class="scientist-filters__rotulo">País</label>
+      <label class="scientist-filters__rotulo" for="filtro-pais">País</label>
       <select id="filtro-pais" v-model="pais" class="scientist-filters__controle">
         <option value="">Todos os países</option>
         <option v-for="opcao in store.paises" :key="opcao" :value="opcao">{{ opcao }}</option>

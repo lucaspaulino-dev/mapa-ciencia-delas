@@ -28,10 +28,16 @@ describe('ScientistFilters', () => {
     expect(store.filtros.pais).toBe('Brasil')
   })
 
-  it('cada campo tem rótulo', () => {
+  it('cada campo tem rótulo associado pelo for/id', () => {
     const wrapper = mount(ScientistFilters)
-    const rotulos = wrapper.findAll('label').map((l) => l.text())
-    expect(rotulos).toEqual(['Buscar por nome', 'Área', 'País'])
+    const rotulos = wrapper.findAll('label')
+    expect(rotulos.map((l) => l.text())).toEqual(['Buscar por nome', 'Área', 'País'])
+
+    for (const rotulo of rotulos) {
+      const alvo = rotulo.attributes('for')
+      expect(alvo).toBeTruthy()
+      expect(wrapper.find(`#${alvo}`).exists()).toBe(true)
+    }
   })
 
   it('o botão "Limpar filtros" aparece só com filtro ativo e limpa tudo', async () => {
