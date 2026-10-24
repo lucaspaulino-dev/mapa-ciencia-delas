@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ScientistCard from '@/components/ScientistCard.vue'
 import { cientistas } from '@/data/cientistas'
 </script>
 
@@ -8,7 +9,12 @@ import { cientistas } from '@/data/cientistas'
     <p class="home__texto">
       Mulheres que mudaram a ciência e a tecnologia, com informação correta e fonte para cada fato.
     </p>
-    <p class="home__contagem">{{ cientistas.length }} cientistas cadastradas até agora.</p>
+
+    <ul class="home__lista">
+      <li v-for="cientista in cientistas" :key="cientista.id">
+        <ScientistCard :cientista="cientista" />
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -23,7 +29,12 @@ import { cientistas } from '@/data/cientistas'
   font-size: 1.125rem;
 }
 
-.home__contagem {
-  color: var(--cor-texto-suave);
+.home__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 </style>
