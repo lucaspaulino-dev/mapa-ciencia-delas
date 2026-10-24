@@ -2,7 +2,7 @@
 description: Reviewer do Mapa Ciência Delas. Revisa, com contexto limpo, código que já compila contra o plano, as regras de negócio, acessibilidade e qualidade. Não edita código; grava o relatório em docs/revisao.md.
 mode: subagent
 temperature: 0.1
-steps: 25
+steps: 40
 permission:
   edit:
     "*": deny
