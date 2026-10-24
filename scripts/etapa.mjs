@@ -2,20 +2,21 @@
 // Os pontos de controle são os ramos etapa-0 ... etapa-9 do repositório original.
 // Uso: npm run etapa            (lista as etapas)
 //      npm run etapa -- 5       (vai para a etapa 5)
-import { execSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 
-const git = (args) =>
-  execSync(`git ${args}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim()
+// Argumentos em lista, sem shell: no Windows o cmd.exe trataria o ^ de ^{commit} como escape.
+const git = (...args) =>
+  execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim()
 
-const tentar = (args) => {
+const tentar = (...args) => {
   try {
-    return { ok: true, saida: git(args) }
+    return { ok: true, saida: git(...args) }
   } catch (erro) {
     return { ok: false, saida: String(erro.stderr || erro.message).trim() }
   }
 }
 
-const existe = (ref) => tentar(`rev-parse -q --verify ${ref}^{commit}`).ok
+const existe = (ref) => tentar('rev-parse', '-q', '--verify', `${ref}^{commit}`).ok
 
 const localizar = (ramo) =>
   [`refs/remotes/origin/${ramo}`, `refs/heads/${ramo}`].find((ref) => existe(ref))
@@ -34,7 +35,7 @@ const DESCRICOES = [
 ]
 
 const listar = () => {
-  if (!existe('refs/remotes/origin/etapa-0')) tentar('fetch origin')
+  if (!existe('refs/remotes/origin/etapa-0')) tentar('fetch', 'origin')
   console.log('Etapas disponíveis:\n')
   DESCRICOES.forEach((descricao, n) => {
     const marca = localizar(`etapa-${n}`) ? ' ' : '?'
@@ -60,7 +61,7 @@ let ref = localizar(etapa)
 
 if (!ref) {
   console.log(`Buscando a ${etapa} no GitHub...`)
-  tentar('fetch origin')
+  tentar('fetch', 'origin')
   ref = localizar(etapa)
   if (!ref) {
     console.error(`A etapa ${numero} não existe. Veja a lista com: npm run etapa`)
@@ -68,15 +69,15 @@ if (!ref) {
   }
 }
 
-const ramoAtual = tentar('branch --show-current').saida || 'HEAD'
-const alterado = tentar('status --porcelain').saida !== ''
+const ramoAtual = tentar('branch', '--show-current').saida || 'HEAD'
+const alterado = tentar('status', '--porcelain').saida !== ''
 let guardadoNoStash = false
 
 if (alterado) {
-  tentar('add -A')
-  const commit = tentar(`commit -m "wip: meu trabalho antes de pular para a ${etapa}"`)
+  tentar('add', '-A')
+  const commit = tentar('commit', '-m', `wip: meu trabalho antes de pular para a ${etapa}`)
   if (!commit.ok) {
-    const stash = tentar(`stash push -u -m "antes de pular para a ${etapa}"`)
+    const stash = tentar('stash', 'push', '-u', '-m', `antes de pular para a ${etapa}`)
     if (!stash.ok) {
       console.error('Não consegui guardar o seu trabalho. Nada foi alterado.\n' + stash.saida)
       process.exit(1)
@@ -87,7 +88,7 @@ if (alterado) {
 
 const hora = new Date().toTimeString().slice(0, 5).replace(':', '')
 const novoRamo = `minha-${etapa}-${hora}`
-const troca = tentar(`switch -c ${novoRamo} ${ref}`)
+const troca = tentar('switch', '-c', novoRamo, ref)
 
 if (!troca.ok) {
   console.error(`Não consegui ir para a ${etapa}:\n${troca.saida}`)
