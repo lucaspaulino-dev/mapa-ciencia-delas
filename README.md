@@ -25,11 +25,11 @@ O Mapa Ciência Delas lista mulheres que mudaram a ciência e a tecnologia, com 
    npm run dev         # abre em http://localhost:5173
    ```
 
-Use `git clone`, não "Use this template" nem o ZIP do botão verde: só o clone traz os pontos de controle das etapas.
+Use `git clone`: ele traz os pontos de controle de todas as etapas. Se preferir uma cópia na sua conta, use "Use this template" marcando **Include all branches** e clone a sua cópia.
 
 ## Etapas do curso
 
-Cada etapa tem um ponto de controle (tag `etapa-N`) com a solução de referência.
+Cada etapa tem um ponto de controle (o ramo `etapa-N`) com a solução de referência. O ramo `solucao` é o projeto completo.
 
 | Etapa | O que você constrói | Como |
 |---|---|---|
@@ -53,7 +53,9 @@ npm run etapa          # lista as etapas
 npm run etapa -- 5     # vai para o ponto de controle da etapa 5
 ```
 
-O comando guarda o seu trabalho num commit no ramo em que você estava e cria um ramo novo a partir da etapa escolhida. Nada se perde.
+O comando guarda o seu trabalho num commit no ramo em que você estava e cria um ramo novo (`minha-etapa-N-hhmm`) a partir do ponto de controle. Nada se perde.
+
+Sem Git? Cada etapa também pode ser baixada em ZIP: `https://github.com/lucaspaulino-dev/mapa-ciencia-delas/archive/refs/heads/etapa-N.zip` (troque o N).
 
 ## Material de apoio
 

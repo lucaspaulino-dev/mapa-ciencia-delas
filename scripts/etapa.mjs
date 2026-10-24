@@ -1,10 +1,11 @@
 // Pula para o ponto de controle de uma etapa do curso sem perder o seu trabalho.
+// Os pontos de controle são os ramos etapa-0 ... etapa-9 do repositório original.
 // Uso: npm run etapa            (lista as etapas)
 //      npm run etapa -- 5       (vai para a etapa 5)
 import { execSync } from 'node:child_process'
 
-const git = (args, opts = {}) =>
-  execSync(`git ${args}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], ...opts }).trim()
+const git = (args) =>
+  execSync(`git ${args}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim()
 
 const tentar = (args) => {
   try {
@@ -14,14 +15,31 @@ const tentar = (args) => {
   }
 }
 
+const existe = (ref) => tentar(`rev-parse -q --verify ${ref}^{commit}`).ok
+
+const localizar = (ramo) =>
+  [`refs/remotes/origin/${ramo}`, `refs/heads/${ramo}`].find((ref) => existe(ref))
+
+const DESCRICOES = [
+  'projeto inicial: tipos, dados e regras de negócio como teste',
+  'card de cientista com teste, na página inicial',
+  'AGENTS.md do projeto',
+  'skill qualidade-vue e card corrigido pela revisão',
+  'store Pinia com busca e filtros; permissões e plugin ativos',
+  'agentes do time e plano da listagem',
+  'listagem implementada pela coder, item por item',
+  'revisão da listagem e correção dos Blockers',
+  'página de detalhe (demonstração da maestra)',
+  'MCP do Context7 e do Playwright',
+]
+
 const listar = () => {
-  const etapas = tentar('tag -l "etapa-*" -n1 --sort=version:refname')
-  if (!etapas.ok || !etapas.saida) {
-    console.log('Nenhuma etapa encontrada. Rode: git fetch --tags origin')
-    return
-  }
+  if (!existe('refs/remotes/origin/etapa-0')) tentar('fetch origin')
   console.log('Etapas disponíveis:\n')
-  console.log(etapas.saida)
+  DESCRICOES.forEach((descricao, n) => {
+    const marca = localizar(`etapa-${n}`) ? ' ' : '?'
+    console.log(`${marca} ${String(n).padStart(2)}  ${descricao}`)
+  })
   console.log('\nPara ir a uma etapa: npm run etapa -- <número>')
 }
 
@@ -37,12 +55,14 @@ if (!/^\d+$/.test(numero)) {
   process.exit(1)
 }
 
-const tag = `etapa-${numero}`
+const etapa = `etapa-${numero}`
+let ref = localizar(etapa)
 
-if (!tentar(`rev-parse -q --verify refs/tags/${tag}`).ok) {
-  console.log(`Buscando ${tag} no GitHub...`)
-  tentar('fetch --tags origin')
-  if (!tentar(`rev-parse -q --verify refs/tags/${tag}`).ok) {
+if (!ref) {
+  console.log(`Buscando a ${etapa} no GitHub...`)
+  tentar('fetch origin')
+  ref = localizar(etapa)
+  if (!ref) {
     console.error(`A etapa ${numero} não existe. Veja a lista com: npm run etapa`)
     process.exit(1)
   }
@@ -54,9 +74,9 @@ let guardadoNoStash = false
 
 if (alterado) {
   tentar('add -A')
-  const commit = tentar(`commit -m "wip: meu trabalho antes de pular para a ${tag}"`)
+  const commit = tentar(`commit -m "wip: meu trabalho antes de pular para a ${etapa}"`)
   if (!commit.ok) {
-    const stash = tentar(`stash push -u -m "antes de pular para a ${tag}"`)
+    const stash = tentar(`stash push -u -m "antes de pular para a ${etapa}"`)
     if (!stash.ok) {
       console.error('Não consegui guardar o seu trabalho. Nada foi alterado.\n' + stash.saida)
       process.exit(1)
@@ -66,15 +86,15 @@ if (alterado) {
 }
 
 const hora = new Date().toTimeString().slice(0, 5).replace(':', '')
-const novoRamo = `${tag}-${hora}`
-const troca = tentar(`switch -c ${novoRamo} ${tag}`)
+const novoRamo = `minha-${etapa}-${hora}`
+const troca = tentar(`switch -c ${novoRamo} ${ref}`)
 
 if (!troca.ok) {
-  console.error(`Não consegui ir para a ${tag}:\n${troca.saida}`)
+  console.error(`Não consegui ir para a ${etapa}:\n${troca.saida}`)
   process.exit(1)
 }
 
-console.log(`Pronto: você está na ${tag}, no ramo ${novoRamo}.`)
+console.log(`Pronto: você está na ${etapa}, no ramo ${novoRamo}.`)
 if (guardadoNoStash) {
   console.log('Seu trabalho anterior foi guardado no stash. Para recuperar: git stash list e git stash pop')
 } else if (alterado) {
