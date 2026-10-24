@@ -42,6 +42,13 @@ describe('ScientistCard', () => {
     expect(link.attributes('rel')).toBe('noopener noreferrer')
   })
 
+  it('o link diz a quem se refere e avisa que abre em nova aba (regra 4)', () => {
+    const wrapper = mount(ScientistCard, { props: { cientista: ada } })
+    const textoDoLink = wrapper.find('a').text().replace(/\s+/g, ' ')
+    expect(textoDoLink).toBe('Saiba mais sobre Ada Lovelace (abre em nova aba)')
+    expect(wrapper.find('a .u-visually-hidden').exists()).toBe(true)
+  })
+
   it('mostra a imagem com o texto alternativo dos dados só quando existe imagem', () => {
     expect(mount(ScientistCard, { props: { cientista: ada } }).find('img').exists()).toBe(false)
 

@@ -37,7 +37,9 @@ const periodo = computed(() => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      Saiba mais
+      Saiba mais<span class="u-visually-hidden">
+        sobre {{ props.cientista.nome }} (abre em nova aba)</span
+      >
     </a>
   </article>
 </template>
