@@ -12,6 +12,15 @@ describe.each(cientistas)('$id', (cientista) => {
     expect(cientista.contribuicao.trim()).not.toBe('')
   })
 
+  it('regra 1: tem local de nascimento com cidade e coordenadas válidas', () => {
+    const { cidade, lat, lng } = cientista.localNascimento
+    expect(cidade.trim()).not.toBe('')
+    expect(lat).toBeGreaterThanOrEqual(-90)
+    expect(lat).toBeLessThanOrEqual(90)
+    expect(lng).toBeGreaterThanOrEqual(-180)
+    expect(lng).toBeLessThanOrEqual(180)
+  })
+
   it('regra 1: a contribuição tem até 280 caracteres', () => {
     expect(cientista.contribuicao.length).toBeLessThanOrEqual(280)
   })
