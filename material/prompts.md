@@ -196,7 +196,7 @@ O mesmo fluxo das etapas 5 a 7, agora numa feature maior. Faça o commit da list
 Aperte **Tab** até a **arquiteta**:
 
 ```text
-Quero um mapa-múndi na página inicial, acima da lista: um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Ao clicar no marcador, abre um popup com o card da cientista. Siga a regra 8 de docs/regras-de-negocio.md e use o desenho e a conta da seção "Mapa-múndi" do mesmo arquivo. Faça o plano.
+Quero que um mapa-múndi substitua a lista de cards na página inicial: um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Ao clicar no marcador, abre um popup com o card da cientista. Siga a regra 8 de docs/regras-de-negocio.md e use o desenho e a conta da seção "Mapa-múndi" do mesmo arquivo. Faça o plano.
 ```
 
 Ela deve guardar o plano da listagem em `docs/planos/` antes de escrever o novo. Revise com as quatro perguntas de `material/revisao-do-plano.md` e aprove. Depois, **Tab** até a **coder**, um item por vez:

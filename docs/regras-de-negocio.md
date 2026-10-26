@@ -9,7 +9,7 @@ O Mapa Ciência Delas lista cientistas com informação correta, fontes verific�
 5. Os dados e os filtros ficam na store Pinia `useCientistasStore`, porque são compartilhados entre a listagem e o mapa; componentes não guardam cópia da lista.
 6. A interface segue a WCAG 2.2 nível AA: contraste mínimo, foco visível, navegação completa por teclado e rótulo em todo campo.
 7. Nenhuma informação biográfica sem fonte.
-8. O mapa-múndi mostra um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Cada marcador é um botão com o nome da cientista. Ao ativá-lo, abre um popup com o card dela, como diálogo: o foco vai para dentro do popup, Esc ou o botão "Fechar" o fecham, e o foco volta ao marcador. A lista continua na página como alternativa ao mapa.
+8. O mapa-múndi mostra um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Cada marcador é um botão com o nome da cientista. Ao ativá-lo, abre um popup com o card dela, como diálogo: o foco vai para dentro do popup, Esc ou o botão "Fechar" o fecham, e o foco volta ao marcador. Os marcadores ficam numa lista (`<ul>`), para que o leitor de tela anuncie quantas cientistas estão no mapa. Sem resultado nos filtros, o mapa mostra a mensagem "Nenhuma cientista encontrada com esses filtros.".
 
 ## Modelo de dados
 
