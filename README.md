@@ -2,7 +2,7 @@
 
 Projeto do mini curso **Do Prompt ao Produto: desenvolvendo com agentes de IA** (SNCT 2026, IFSP Campus Birigui).
 
-O Mapa Ciência Delas lista mulheres que mudaram a ciência e a tecnologia, com informação correta, fonte para cada fato e interface acessível. Durante o curso, você constrói o Mapa com agentes de IA no [OpenCode](https://opencode.ai/docs), uma etapa por vez, sem abrir mão das decisões: a IA acelera o código; a arquitetura, a regra de negócio e a revisão continuam sendo suas.
+O Mapa Ciência Delas mostra, num mapa-múndi, mulheres que mudaram a ciência e a tecnologia, com informação correta, fonte para cada fato e interface acessível. Durante o curso, você constrói o Mapa com agentes de IA no [OpenCode](https://opencode.ai/docs), uma etapa por vez, sem abrir mão das decisões: a IA acelera o código; a arquitetura, a regra de negócio e a revisão continuam sendo suas.
 
 ## Antes da aula (obrigatório, cerca de 20 minutos)
 
