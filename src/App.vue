@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <nav aria-label="Principal">
       <ul class="app__menu">
         <li><RouterLink to="/">Início</RouterLink></li>
+        <li><RouterLink to="/continue-a-historia">Continue a história</RouterLink></li>
       </ul>
     </nav>
   </header>
