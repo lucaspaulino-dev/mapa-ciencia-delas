@@ -189,19 +189,31 @@ Chame a reviewer de novo. Quando vier APROVADO, faça o commit.
 
 ---
 
-## Etapa 8: orquestração automática (demonstração com medição)
+## Etapa 8: o mapa-múndi (Módulo "Multiagentes": segunda volta do time)
 
-```bash
-cp material/agents/maestra.md .opencode/agents/
-```
+O mesmo fluxo das etapas 5 a 7, agora numa feature maior. Faça o commit da listagem antes de começar.
 
-Antes, anote o custo até agora: `opencode stats`. Aperte **Tab** até a **maestra**:
+Aperte **Tab** até a **arquiteta**:
 
 ```text
-Quero uma página de detalhe da cientista em /cientistas/:id, aberta ao clicar no nome dela no card. A página mostra todos os dados, todas as fontes e um link para voltar à listagem. Se o id não existir, mostra uma mensagem de "cientista não encontrada".
+Quero um mapa-múndi na página inicial, acima da lista: um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Ao clicar no marcador, abre um popup com o card da cientista. Siga a regra 8 de docs/regras-de-negocio.md e use o desenho e a conta da seção "Mapa-múndi" do mesmo arquivo. Faça o plano.
 ```
 
-Acompanhe as sessões filhas de cada subagente e os pontos em que ela para e pede aprovação. No fim, rode `opencode stats` de novo e compare com o custo de quando **você** orquestrou a listagem nas etapas 5 a 7.
+Ela deve guardar o plano da listagem em `docs/planos/` antes de escrever o novo. Revise com as quatro perguntas de `material/revisao-do-plano.md` e aprove. Depois, **Tab** até a **coder**, um item por vez:
+
+```text
+Execute o item 1 do docs/plano-de-acao.md.
+```
+
+No fim, chame a revisora com contexto limpo (digite `@` e escolha **reviewer** na lista):
+
+```text
+@reviewer Revise as mudanças ainda não commitadas do mapa contra o docs/plano-de-acao.md.
+```
+
+Se vier REPROVADO, **Tab** até a **coder** e peça para corrigir os Blockers de `docs/revisao.md`, como na etapa 7. Depois teste você mesma, com `npm run dev`, só com o teclado: o Tab chega aos marcadores? Enter abre o popup? Esc fecha e o foco volta ao marcador?
+
+**E a Maestra?** O arquivo `material/agents/maestra.md` mostra como seria uma agente que automatiza essas passagens. Ela fica como exemplo para discutir multiagentes; não vamos rodá-la. Pelo critério do módulo, ela não passa: só automatizaria o que você faz com três menções, e é dela que viria o custo extra.
 
 ---
 
@@ -225,7 +237,7 @@ Usando o context7, confira na documentação atual do Pinia como tipar uma setup
 Demonstração (instrutor), com `npm run dev` rodando em outro terminal:
 
 ```text
-Com o playwright, abra http://localhost:5173 e navegue pela página usando só a tecla Tab. Relate a ordem de foco, qualquer elemento que não receba foco e qualquer foco invisível. Não edite nada.
+Com o playwright, abra http://localhost:5173 e navegue pela página só com o teclado: Tab até um marcador do mapa, Enter para abrir o popup, Esc para fechar. Relate a ordem de foco, qualquer elemento que não receba foco, qualquer foco invisível e se o foco volta ao marcador depois de fechar o popup. Não edite nada.
 ```
 
 ---
