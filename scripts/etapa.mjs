@@ -30,7 +30,7 @@ const DESCRICOES = [
   'agentes do time e plano da listagem',
   'listagem implementada pela coder, item por item',
   'revisão da listagem e correção dos Blockers',
-  'página de detalhe (demonstração da maestra)',
+  'mapa-múndi com popup (arquiteta, coder e reviewer)',
   'MCP do Context7 e do Playwright',
 ]
 

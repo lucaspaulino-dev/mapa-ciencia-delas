@@ -6,7 +6,7 @@ O Mapa Ciência Delas lista mulheres que mudaram a ciência e a tecnologia, com 
 
 ## Antes da aula (obrigatório, cerca de 20 minutos)
 
-1. **Node.js 24 LTS** (24.12 ou superior), em [nodejs.org](https://nodejs.org/en/download). Confira com `node -v`. Evite o Node 22: o npm 10 que vem com ele falhou ao instalar as dependências deste projeto.
+1. **Node.js 24 LTS** (24.15 ou superior), em [nodejs.org](https://nodejs.org/en/download). Confira com `node -v`. Evite o Node 22: o npm 10 que vem com ele falhou ao instalar as dependências deste projeto.
 2. **Git**: `git --version`.
 3. **OpenCode v1**. No Windows, use o WSL.
    ```bash
@@ -41,7 +41,7 @@ Cada etapa tem um ponto de controle (o ramo `etapa-N`) com a solução de refer�
 | 5 | Plano da listagem com aceite verificável | agente arquiteta |
 | 6 | A listagem funcionando | agente coder, um item por vez |
 | 7 | Revisão com contexto limpo | subagente reviewer |
-| 8 | Página de detalhe | agente maestra orquestrando (demonstração com medição de custo) |
+| 8 | Mapa-múndi com um marcador por cientista e popup | o mesmo time: arquiteta, coder e reviewer |
 | 9 | Documentação atual e teste de teclado | MCP: Context7 e Playwright |
 
 Os prompts de cada etapa estão em [`material/prompts.md`](material/prompts.md).
@@ -62,7 +62,7 @@ Sem Git? Cada etapa também pode ser baixada em ZIP: `https://github.com/lucaspa
 | Arquivo | Para quê |
 |---|---|
 | [`material/prompts.md`](material/prompts.md) | Os prompts de todas as etapas |
-| [`material/agents/`](material/agents) | Arquiteta, Coder, Reviewer e Maestra |
+| [`material/agents/`](material/agents) | Arquiteta, Coder e Reviewer; a Maestra fica como exemplo de orquestração automática |
 | [`material/skills/qualidade-vue/`](material/skills/qualidade-vue) | A skill de qualidade do projeto |
 | [`material/plugins/verificar-edicao.ts`](material/plugins/verificar-edicao.ts) | Plugin que roda o lint depois de cada edição do agente |
 | [`material/opencode.json`](material/opencode.json) | Permissões do projeto (Módulo Human-in-the-loop) |
