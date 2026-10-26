@@ -13,7 +13,7 @@ Na página inicial, quem visita busca uma cientista pelo nome, filtra por área 
 - [ ] Tudo funciona só com teclado — verifica: manual, `npm run dev` e navegar a página com Tab, Shift+Tab, setas e Enter
 
 ## Fora de escopo
-- Página de detalhe da cientista.
+- Mapa-múndi (etapa 8).
 - Guardar os filtros na URL.
 - Paginação.
 
