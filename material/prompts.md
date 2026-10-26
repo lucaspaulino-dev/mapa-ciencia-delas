@@ -248,4 +248,4 @@ Com o playwright, abra http://localhost:5173 e navegue pela página só com o te
 opencode stats --models
 ```
 
-Anote o modelo, os tokens e o custo, e se a reviewer aprovou a sua listagem. Vamos comparar a turma.
+Anote o modelo, os tokens e o custo, e se a reviewer aprovou a sua listagem e o seu mapa. Vamos comparar a turma.
