@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 import ScientistFilters from '@/components/ScientistFilters.vue'
-import ScientistList from '@/components/ScientistList.vue'
+import ScientistMap from '@/components/ScientistMap.vue'
 import { useCientistasStore } from '@/stores/cientistas'
 
 const store = useCientistasStore()
@@ -22,7 +22,7 @@ const contagem = computed(() => {
 
     <ScientistFilters />
     <p class="home__contagem" aria-live="polite">{{ contagem }}</p>
-    <ScientistList :cientistas="store.cientistasFiltradas" />
+    <ScientistMap :cientistas="store.cientistasFiltradas" />
   </section>
 </template>
 

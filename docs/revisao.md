@@ -1,42 +1,29 @@
-# Revisão: listagem com busca e filtros
+# Revisão: mapa-múndi no lugar da lista de cards
 
-Veredito: REPROVADO
-Escopo: `git diff etapa-5` (ScientistList, ScientistFilters, HomeView e testes)
+Veredito: APROVADO
+Escopo: `git diff etapa-7` (projetar, ScientistPopup, ScientistMap, HomeView, remoção de ScientistList e testes)
 Portão: `npm run verificar` → passou
 
 ## Aceite
-- [x] Busca filtra os cards sem diferenciar acentos — entregue em `src/stores/cientistas.ts:13` e provado em `src/views/__tests__/HomeView.spec.ts:24`
-- [x] Filtros de área e país com valores existentes e rótulo legível — entregue em `src/components/ScientistFilters.vue:42` e `:52`
-- [ ] Todo campo de filtro tem `<label>` associado — **entregue diferente do prometido**: os rótulos de área e de país existem, mas não estão associados aos campos
-- [x] "Limpar filtros" só com filtro ativo — entregue em `src/components/ScientistFilters.vue:57`
-- [x] Região `aria-live` com a contagem — entregue em `src/views/HomeView.vue:24`
-- [x] Mensagem sem resultado — entregue em `src/components/ScientistList.vue:17`
-- [ ] Tudo funciona só com teclado — não verificável por esta revisão; depende do teste manual da humana
+- [x] Conta da seção "Mapa-múndi" — entregue em `src/utils/projetar.ts:15` e provado em `src/utils/__tests__/projetar.spec.ts:6`
+- [x] Um marcador por cientista recebida — entregue em `src/components/ScientistMap.vue:38` e provado em `ScientistMap.spec.ts:20` e `:34`
+- [x] Marcador é `<button>` com nome e cidade — entregue em `src/components/ScientistMap.vue:44`
+- [x] Popup como diálogo modal com foco no "Fechar" — entregue em `src/components/ScientistPopup.vue:45` e `:21`, provado em `ScientistMap.spec.ts:45`
+- [x] Esc e "Fechar" devolvem o foco ao marcador — entregue em `src/components/ScientistMap.vue:25`, provado em `ScientistMap.spec.ts:55` e `:65`
+- [x] Tab preso no popup — entregue em `src/components/ScientistPopup.vue:25`, provado em `ScientistPopup.spec.ts:31`
+- [x] Filtros valem para o mapa e mensagem sem resultado — entregue em `src/views/HomeView.vue:25` e `src/components/ScientistMap.vue:34`, provado em `HomeView.spec.ts:25` e `:35`
+- [x] Sem lista de cards na página inicial — provado em `HomeView.spec.ts:21`; `ScientistList` removido sem deixar import
+- [ ] Nome no foco e fluxo só com teclado — não verificável por esta revisão; depende do teste manual da humana
 
 ## Achados
 
-### src/components/ScientistFilters.vue
-- **Blocker** `ScientistFilters.vue:40` — `<label>Área</label>` sem `for="filtro-area"`. Clicar no rótulo não foca o campo e o leitor de tela anuncia o select sem nome. Viola a regra 6 (rótulo em todo campo) e a linha de aceite 3. Correção sugerida: associar o rótulo ao `id` do select.
-- **Blocker** `ScientistFilters.vue:50` — mesmo problema no rótulo "País" (`filtro-pais`).
-- **Note** — nenhum `any`, nenhum `v-html`, nenhum `target="_blank"` novo. A busca usa `<form role="search">` com `@submit.prevent`, correto.
+### src/components/ScientistMap.vue
+- **Warning** `ScientistMap.vue:132` — o nome do marcador fica escondido com `clip-path` até o foco ou o mouse. Para leitor de tela está certo (o texto continua no botão), mas em tela de toque não há hover. Correção sugerida, fora deste plano: mostrar o nome também em `:active` ou uma legenda abaixo do mapa.
+- **Note** `ScientistMap.vue:33` — a imagem do mapa tem `alt=""` porque é decorativa: a informação está nos botões. Correto pela regra 2.
+- **Note** — nenhum `any`, nenhum `v-html`, nenhuma dependência nova. A lista vem por prop, sem cópia local (regra 5).
 
-### src/components/__tests__/ScientistFilters.spec.ts
-- **Warning** `ScientistFilters.spec.ts:31` — o teste "cada campo tem rótulo" confere só o texto dos rótulos, não a associação com o campo. Por isso o Blocker acima passou no portão. Correção sugerida: verificar que o `for` de cada rótulo aponta para o `id` de um campo existente.
+### src/components/ScientistPopup.vue
+- **Note** `ScientistPopup.vue:25` — o Tab preso considera só `button` e `a[href]`. Basta para o conteúdo atual do card; se o card ganhar outro elemento focável, a lista precisa crescer.
 
-### src/components/ScientistList.vue
-- **Note** — lista em `<ul>`/`<li>`, card em `<article>`, estado vazio em texto. Componente de apresentação não importa a store, como pede a skill `qualidade-vue`.
-
-### src/views/HomeView.vue
-- **Note** — um único `<h1>`; contagem no singular e no plural correta; lista lida de `cientistasFiltradas`, sem cópia local (regra 5).
-
----
-
-# Revisão 2: após a correção
-
-Veredito: APROVADO
-Escopo: `git diff` da correção dos Blockers
-Portão: `npm run verificar` → passou
-
-- Os dois Blockers foram corrigidos: `for="filtro-area"` e `for="filtro-pais"` em `ScientistFilters.vue`.
-- O Warning foi resolvido: o teste agora verifica que o `for` de cada rótulo aponta para um campo existente.
-- Nenhum achado novo.
+### Testes
+- **Note** — os testes de foco usam `attachTo: document.body` e desmontam o componente no `afterEach`, o que evita vazamento entre testes.

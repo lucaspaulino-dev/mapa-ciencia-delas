@@ -10,20 +10,25 @@ describe('HomeView', () => {
     setActivePinia(createPinia())
   })
 
-  it('mostra todas as cientistas e anuncia a contagem', () => {
+  it('mostra um marcador por cientista no mapa e anuncia a contagem', () => {
     const wrapper = mount(HomeView)
-    expect(wrapper.findAll('article')).toHaveLength(cientistas.length)
+    expect(wrapper.findAll('.scientist-map__button')).toHaveLength(cientistas.length)
     expect(wrapper.find('[aria-live="polite"]').text()).toBe(
       `${cientistas.length} cientistas encontradas`,
     )
   })
 
-  it('a busca sem acento reduz os cards e a contagem acompanha', async () => {
+  it('não mostra mais a lista de cards: o card fica no popup', () => {
+    expect(mount(HomeView).findAll('article')).toHaveLength(0)
+  })
+
+  it('a busca sem acento reduz os marcadores e a contagem acompanha', async () => {
     const wrapper = mount(HomeView)
     await wrapper.find('#filtro-busca').setValue('johanna dob')
 
-    expect(wrapper.findAll('article')).toHaveLength(1)
-    expect(wrapper.find('article h3').text()).toBe('Johanna Döbereiner')
+    const marcadores = wrapper.findAll('.scientist-map__button')
+    expect(marcadores).toHaveLength(1)
+    expect(marcadores[0]?.text()).toContain('Johanna Döbereiner')
     expect(wrapper.find('[aria-live="polite"]').text()).toBe('1 cientista encontrada')
   })
 
@@ -31,7 +36,7 @@ describe('HomeView', () => {
     const wrapper = mount(HomeView)
     await wrapper.find('#filtro-busca').setValue('ninguém com esse nome')
 
-    expect(wrapper.findAll('article')).toHaveLength(0)
+    expect(wrapper.findAll('.scientist-map__button')).toHaveLength(0)
     expect(wrapper.text()).toContain('Nenhuma cientista encontrada com esses filtros.')
     expect(wrapper.find('[aria-live="polite"]').text()).toBe('0 cientistas encontradas')
   })
