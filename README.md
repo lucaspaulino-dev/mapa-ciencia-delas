@@ -41,7 +41,7 @@ Cada etapa tem um ponto de controle (o ramo `etapa-N`) com a solução de refer�
 | 5 | Plano da listagem com aceite verificável | agente arquiteta |
 | 6 | A listagem funcionando | agente coder, um item por vez |
 | 7 | Revisão com contexto limpo | subagente reviewer |
-| 8 | Mapa-múndi com um marcador por cientista e popup | o mesmo time: arquiteta, coder e reviewer |
+| 8 | Mapa-múndi no lugar da lista: um marcador por cientista e popup com o card | o mesmo time: arquiteta, coder e reviewer |
 | 9 | Documentação atual e teste de teclado | MCP: Context7 e Playwright |
 
 Os prompts de cada etapa estão em [`material/prompts.md`](material/prompts.md).
