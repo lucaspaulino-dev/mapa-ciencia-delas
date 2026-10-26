@@ -10,6 +10,7 @@ const ada: Cientista = {
   area: 'matematica',
   pais: 'Reino Unido',
   periodo: { nascimento: 1815, falecimento: 1852 },
+  localNascimento: { cidade: 'Londres, Inglaterra', lat: 51.51, lng: -0.14 },
   contribuicao: 'Primeiro algoritmo publicado destinado a uma máquina.',
   fontes: [{ titulo: 'Britannica', url: 'https://www.britannica.com/biography/Ada-Lovelace' }],
 }
