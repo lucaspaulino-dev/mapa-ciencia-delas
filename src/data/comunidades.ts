@@ -11,7 +11,7 @@ export const comunidades: Comunidade[] = [
   {
     nome: 'Laboratoria',
     foco: 'Bootcamps para mulheres na América Latina',
-    url: 'https://www.laboratoria.la',
+    url: 'https://laboratoria.la/pt/',
   },
   {
     nome: 'PretaLab (Olabi)',
