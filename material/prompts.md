@@ -69,7 +69,7 @@ Contexto: AGENTS.md, package.json.
 
 Faça: garanta que o AGENTS.md tenha, nesta ordem e em menos de 40 linhas:
 1. Stack: Vue 3, TypeScript estrito, Pinia, Vue Router, Vitest. Sem bibliotecas de UI nem de CSS.
-2. Convenções: código em inglês (componentes em PascalCase, tipos, dados e store); textos visíveis em português; tipos em src/types/<nome>.type.ts; dados e filtros em useScientistsStore; CSS scoped com BEM; imports com @/.
+2. Convenções: código em inglês (componentes em PascalCase, tipos, dados e store); textos visíveis em português; tipos em src/types/<nome>.type.ts; dados compartilhados numa store Pinia; CSS scoped com BEM; imports com @/.
 3. Antes de concluir qualquer tarefa: npm run verificar.
 4. Testes: rode com npm run test:unit -- --run (sem --run o Vitest fica em modo watch).
 5. Proibido: any; adicionar dependência sem perguntar.

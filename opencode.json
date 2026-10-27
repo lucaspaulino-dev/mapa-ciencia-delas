@@ -70,6 +70,16 @@
       "action": "webfetch",
       "resource": "*",
       "effect": "ask"
+    },
+    {
+      "action": "shell",
+      "resource": "*regras-de-negocio*",
+      "effect": "deny"
+    },
+    {
+      "action": "shell",
+      "resource": "*material/*",
+      "effect": "deny"
     }
   ],
   "mcp": {
