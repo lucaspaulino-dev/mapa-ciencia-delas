@@ -2,6 +2,8 @@
   "$schema": "https://opencode.ai/config.json",
   "permissions": [
     { "action": "read", "resource": "material/*", "effect": "deny" },
-    { "action": "read", "resource": "docs/regras-de-negocio.md", "effect": "deny" }
+    { "action": "read", "resource": "docs/regras-de-negocio.md", "effect": "deny" },
+    { "action": "shell", "resource": "*regras-de-negocio*", "effect": "deny" },
+    { "action": "shell", "resource": "*material/*", "effect": "deny" }
   ]
 }
