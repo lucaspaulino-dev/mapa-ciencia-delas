@@ -37,7 +37,7 @@ Todo o resto desta skill **nenhuma ferramenta checa**. É responsabilidade de qu
 13. Detalhes de contraste, foco e teclado: leia `references/checklist-a11y.md`.
 
 ### Estado
-14. Dados e filtros das cientistas ficam em `useCientistasStore`. Componente recebe dados por props ou lê da store; nunca guarda cópia local da lista.
+14. Dados e filtros das cientistas ficam em `useScientistsStore`. Componente recebe dados por props ou lê da store; nunca guarda cópia local da lista.
 15. Componentes de apresentação (card, popup, mapa) não importam a store; quem importa é a view ou o componente de filtro.
 
 ### CSS
@@ -61,12 +61,12 @@ Ruim:
 
 ```vue
 <script setup lang="ts">
-const { cientista } = defineProps<{ cientista: any }>()
+const { scientist } = defineProps<{ scientist: any }>()
 </script>
 <template>
-  <div class="card" @click="abrir">
-    <b>{{ cientista.nome }}</b>
-    <a :href="cientista.fontes[0].url" target="_blank">Saiba mais</a>
+  <div class="card" @click="open">
+    <b>{{ scientist.name }}</b>
+    <a :href="scientist.sources[0].url" target="_blank">Saiba mais</a>
   </div>
 </template>
 ```
@@ -75,18 +75,18 @@ Bom:
 
 ```vue
 <script setup lang="ts">
-import type { Cientista } from '@/types/cientista.type'
+import type { Scientist } from '@/types/scientist.type'
 
 const props = defineProps<{
   /** Cientista exibida no card. */
-  cientista: Cientista
+  scientist: Scientist
 }>()
 </script>
 <template>
   <article class="scientist-card">
-    <h3 class="scientist-card__title">{{ props.cientista.nome }}</h3>
-    <a :href="props.cientista.fontes[0].url" target="_blank" rel="noopener noreferrer">
-      Saiba mais<span class="u-visually-hidden"> sobre {{ props.cientista.nome }} (abre em nova aba)</span>
+    <h3 class="scientist-card__title">{{ props.scientist.name }}</h3>
+    <a :href="props.scientist.sources[0].url" target="_blank" rel="noopener noreferrer">
+      Saiba mais<span class="u-visually-hidden"> sobre {{ props.scientist.name }} (abre em nova aba)</span>
     </a>
   </article>
 </template>
