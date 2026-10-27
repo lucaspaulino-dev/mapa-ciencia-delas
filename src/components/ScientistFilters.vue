@@ -1,64 +1,64 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { AreaCiencia } from '@/types/cientista.type'
-import { rotuloArea } from '@/data/areas'
-import { useCientistasStore } from '@/stores/cientistas'
+import type { ScienceArea } from '@/types/scientist.type'
+import { areaLabel } from '@/data/areas'
+import { useScientistsStore } from '@/stores/scientists'
 
-const store = useCientistasStore()
+const store = useScientistsStore()
 
-const busca = computed({
-  get: () => store.filtros.busca,
-  set: (valor: string) => store.definirBusca(valor),
+const search = computed({
+  get: () => store.filters.search,
+  set: (value: string) => store.setSearch(value),
 })
 
 const area = computed({
-  get: () => store.filtros.area,
-  set: (valor: AreaCiencia | '') => store.definirArea(valor),
+  get: () => store.filters.area,
+  set: (value: ScienceArea | '') => store.setArea(value),
 })
 
-const pais = computed({
-  get: () => store.filtros.pais,
-  set: (valor: string) => store.definirPais(valor),
+const country = computed({
+  get: () => store.filters.country,
+  set: (value: string) => store.setCountry(value),
 })
 </script>
 
 <template>
   <form class="scientist-filters" role="search" @submit.prevent>
-    <div class="scientist-filters__campo">
-      <label class="scientist-filters__rotulo" for="filtro-busca">Buscar por nome</label>
+    <div class="scientist-filters__field">
+      <label class="scientist-filters__label" for="filter-search">Buscar por nome</label>
       <input
-        id="filtro-busca"
-        v-model="busca"
-        class="scientist-filters__controle"
+        id="filter-search"
+        v-model="search"
+        class="scientist-filters__control"
         type="search"
         autocomplete="off"
       />
     </div>
 
-    <div class="scientist-filters__campo">
-      <label class="scientist-filters__rotulo">Área</label>
-      <select id="filtro-area" v-model="area" class="scientist-filters__controle">
+    <div class="scientist-filters__field">
+      <label class="scientist-filters__label">Área</label>
+      <select id="filter-area" v-model="area" class="scientist-filters__control">
         <option value="">Todas as áreas</option>
-        <option v-for="opcao in store.areas" :key="opcao" :value="opcao">
-          {{ rotuloArea[opcao] }}
+        <option v-for="option in store.areas" :key="option" :value="option">
+          {{ areaLabel[option] }}
         </option>
       </select>
     </div>
 
-    <div class="scientist-filters__campo">
-      <label class="scientist-filters__rotulo">País</label>
-      <select id="filtro-pais" v-model="pais" class="scientist-filters__controle">
+    <div class="scientist-filters__field">
+      <label class="scientist-filters__label">País</label>
+      <select id="filter-country" v-model="country" class="scientist-filters__control">
         <option value="">Todos os países</option>
-        <option v-for="opcao in store.paises" :key="opcao" :value="opcao">{{ opcao }}</option>
+        <option v-for="option in store.countries" :key="option" :value="option">{{ option }}</option>
       </select>
     </div>
 
     <button
-      v-if="store.temFiltroAtivo"
-      class="scientist-filters__limpar"
+      v-if="store.hasActiveFilter"
+      class="scientist-filters__clear"
       type="button"
-      @click="store.limparFiltros()"
+      @click="store.clearFilters()"
     >
       Limpar filtros
     </button>
@@ -74,17 +74,17 @@ const pais = computed({
   margin-bottom: 1rem;
 }
 
-.scientist-filters__campo {
+.scientist-filters__field {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.scientist-filters__rotulo {
+.scientist-filters__label {
   font-weight: 600;
 }
 
-.scientist-filters__controle {
+.scientist-filters__control {
   min-height: 2.5rem;
   padding: 0.5rem 0.75rem;
   font: inherit;
@@ -94,7 +94,7 @@ const pais = computed({
   border-radius: calc(var(--raio) / 2);
 }
 
-.scientist-filters__limpar {
+.scientist-filters__clear {
   min-height: 2.5rem;
   padding: 0.5rem 1rem;
   font: inherit;

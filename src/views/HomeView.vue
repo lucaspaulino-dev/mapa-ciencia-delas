@@ -3,41 +3,41 @@ import { computed } from 'vue'
 
 import ScientistFilters from '@/components/ScientistFilters.vue'
 import ScientistList from '@/components/ScientistList.vue'
-import { useCientistasStore } from '@/stores/cientistas'
+import { useScientistsStore } from '@/stores/scientists'
 
-const store = useCientistasStore()
+const store = useScientistsStore()
 
-const contagem = computed(() => {
-  const total = store.cientistasFiltradas.length
+const countLabel = computed(() => {
+  const total = store.filteredScientists.length
   return total === 1 ? '1 cientista encontrada' : `${total} cientistas encontradas`
 })
 </script>
 
 <template>
-  <section class="home" aria-labelledby="home-titulo">
-    <h1 id="home-titulo" class="home__titulo">Mapa Ciência Delas</h1>
-    <p class="home__texto">
+  <section class="home" aria-labelledby="home-title">
+    <h1 id="home-title" class="home__title">Mapa Ciência Delas</h1>
+    <p class="home__text">
       Mulheres que mudaram a ciência e a tecnologia, com informação correta e fonte para cada fato.
     </p>
 
     <ScientistFilters />
-    <p class="home__contagem" aria-live="polite">{{ contagem }}</p>
-    <ScientistList :cientistas="store.cientistasFiltradas" />
+    <p class="home__count" aria-live="polite">{{ countLabel }}</p>
+    <ScientistList :scientists="store.filteredScientists" />
   </section>
 </template>
 
 <style scoped>
-.home__titulo {
+.home__title {
   margin-top: 0;
   color: var(--cor-primaria);
 }
 
-.home__texto {
+.home__text {
   max-width: 40rem;
   font-size: 1.125rem;
 }
 
-.home__contagem {
+.home__count {
   margin: 0 0 1rem;
   color: var(--cor-texto-suave);
 }
