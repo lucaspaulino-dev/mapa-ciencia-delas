@@ -8,13 +8,13 @@ O Mapa Ciência Delas mostra, num mapa-múndi, mulheres que mudaram a ciência e
 
 1. **Node.js 24 LTS** (24.15 ou superior), em [nodejs.org](https://nodejs.org/en/download). Confira com `node -v`. Evite o Node 22: o npm 10 que vem com ele falhou ao instalar as dependências deste projeto.
 2. **Git**: `git --version`.
-3. **OpenCode v1**. No Windows, use o WSL.
+3. **OpenCode 2**. No Windows, use o WSL.
    ```bash
-   npm install -g opencode-ai@1
-   opencode --version   # deve mostrar 1.x
+   npm install -g @opencode/cli@2
+   opencode --version   # deve mostrar 2.x
    opencode auth login  # conecte o provedor do modelo que você vai usar
    ```
-   Não rode `opencode upgrade --major`: ele troca o v1 pelo OpenCode 2, que ainda está em beta e usa outro formato de configuração.
+   Já tem o OpenCode 1 (pacote `opencode-ai`)? Remova antes com `npm uninstall -g opencode-ai`: as duas versões usam o comando `opencode`, e os plugins do curso só rodam no OpenCode 2.
 4. **Escolha um modelo** com suporte a *tool calling*. Cada pessoa usa o seu; no fim vamos comparar resultados e custos.
 5. **Clone e instale o projeto:**
    ```bash
