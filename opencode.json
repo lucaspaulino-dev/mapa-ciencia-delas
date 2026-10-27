@@ -2,6 +2,11 @@
   "$schema": "https://opencode.ai/config.json",
   "permissions": [
     {
+      "action": "read",
+      "resource": "material/*",
+      "effect": "deny"
+    },
+    {
       "action": "edit",
       "resource": "*",
       "effect": "ask"
