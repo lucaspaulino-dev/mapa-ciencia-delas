@@ -106,7 +106,7 @@ Observe na tela o bloco da ferramenta `skill`: o agente carregou a skill sozinho
 Corrija só os itens Blocker da sua revisão, um por vez, e rode npm run verificar no fim.
 ```
 
-Demonstração (instrutor): skills de terceiros, como `npx skills@latest add mattpocock/skills --skill=grill-me`. Leia sempre o SKILL.md de terceiros antes de usar: skills podem conter scripts.
+Demonstração (instrutor): skills de terceiros, como `npx skills@latest add mattpocock/skills --skill grill-me grilling` (a grill-me só chama a grilling: sem ela, a entrevista não carrega). Leia sempre o SKILL.md de terceiros antes de usar: skills podem conter scripts.
 
 ---
 
