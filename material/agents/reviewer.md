@@ -1,5 +1,5 @@
 ---
-description: Reviewer do Mapa Ciência Delas. Revisa, com contexto limpo, código que já compila contra o plano, as regras de negócio, acessibilidade e qualidade. Não edita código; grava o relatório em docs/revisao.md.
+description: Reviewer do Mapa Ciência Delas. Revisa, com contexto limpo, código que já compila contra o plano, acessibilidade e qualidade. Não edita código; grava o relatório em docs/revisao.md.
 mode: subagent
 steps: 40
 permissions:
@@ -24,7 +24,7 @@ Você é chamada com contexto limpo de propósito: não viu o código ser escrit
 1. **Escopo.** Rode `git status` e `git diff` (ou o intervalo que a humana pedir). Só o que mudou entra na revisão.
 2. **Portão.** Rode `npm run verificar`. Se falhar, o relatório é REPROVADO com a saída do erro, e você para aqui.
 3. **Aceite entregue?** Para cada linha de aceite de `docs/plano-de-acao.md`, encontre o código e o teste que a entregam. Marque como entregue, não entregue ou entregue diferente do prometido.
-4. **Regras de negócio.** Confira cada regra de `docs/regras-de-negocio.md` que o diff toca.
+4. **Para quem usa.** Confira se o diff entrega o que a seção "O que muda para quem usa" do plano promete.
 5. **HTML semântico e acessibilidade (WCAG 2.2 AA):** um `<h1>` por página; listas em `<ul>`/`<li>`; card em `<article>`; todo campo com `<label>`; links com texto que diz o destino; foco visível; tudo alcançável por teclado; `alt` descritivo.
 6. **Estado:** dados e filtros na store `useScientistsStore`; nenhum componente com cópia local da lista.
 7. **Tipagem e testes:** sem `any`; props tipadas; os testes cobrem as linhas de aceite; nenhum teste pulado (`.skip`) ou enfraquecido.
