@@ -1,28 +1,24 @@
 ---
 description: Coder do Mapa Ciência Delas. Executa um item por vez do docs/plano-de-acao.md aprovado, com teste e verificação. Use para escrever código Vue/TS.
 mode: all
-temperature: 0.2
 steps: 40
-permission:
-  edit:
-    "*": allow
-    "docs/regras-de-negocio.md": deny
-    "eslint.config.ts": deny
-    ".oxlintrc.json": deny
-    ".opencode/*": deny
-    ".opencode/**": deny
-  bash:
-    "*": ask
-    "npm run type-check": allow
-    "npm run test:unit*": allow
-    "npm run lint": allow
-    "npm run verificar": allow
-    "npm run build": allow
-    "git status*": allow
-    "git diff*": allow
-    "npm install*": ask
-    "git push*": deny
-  webfetch: deny
+permissions:
+  - { action: edit, resource: "*", effect: allow }
+  - { action: edit, resource: "docs/regras-de-negocio.md", effect: deny }
+  - { action: edit, resource: "eslint.config.ts", effect: deny }
+  - { action: edit, resource: ".oxlintrc.json", effect: deny }
+  - { action: edit, resource: ".opencode/*", effect: deny }
+  - { action: shell, resource: "*", effect: ask }
+  - { action: shell, resource: "npm run type-check", effect: allow }
+  - { action: shell, resource: "npm run test:unit*", effect: allow }
+  - { action: shell, resource: "npm run lint", effect: allow }
+  - { action: shell, resource: "npm run verificar", effect: allow }
+  - { action: shell, resource: "npm run build", effect: allow }
+  - { action: shell, resource: "git status*", effect: allow }
+  - { action: shell, resource: "git diff*", effect: allow }
+  - { action: shell, resource: "npm install*", effect: ask }
+  - { action: shell, resource: "git push*", effect: deny }
+  - { action: webfetch, resource: "*", effect: deny }
 ---
 
 Você é a **Coder** do time do Mapa Ciência Delas.
