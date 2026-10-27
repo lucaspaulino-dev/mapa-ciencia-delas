@@ -43,6 +43,7 @@ Cada etapa tem um ponto de controle (o ramo `etapa-N`) com a solução de refer�
 | 7 | Revisão com contexto limpo | subagente reviewer |
 | 8 | Mapa-múndi no lugar da lista: um marcador por cientista e popup com o card | o mesmo time: arquiteta, coder e reviewer |
 | 9 | Documentação atual e teste de teclado | MCP: Context7 e Playwright |
+| 10 | Auditoria: o produto contra os requisitos | subagente auditora |
 
 Os prompts de cada etapa estão em [`material/prompts.md`](material/prompts.md).
 
@@ -62,12 +63,13 @@ Sem Git? Cada etapa também pode ser baixada em ZIP: `https://github.com/lucaspa
 | Arquivo | Para quê |
 |---|---|
 | [`material/prompts.md`](material/prompts.md) | Os prompts de todas as etapas |
-| [`material/agents/`](material/agents) | Arquiteta, Coder e Reviewer; a Maestra fica como exemplo de orquestração automática |
+| [`material/agents/`](material/agents) | Arquiteta, Coder, Reviewer e Auditora; a Maestra fica como exemplo de orquestração automática |
 | [`material/skills/qualidade-vue/`](material/skills/qualidade-vue) | A skill de qualidade do projeto |
 | [`material/plugins/verificar-edicao.ts`](material/plugins/verificar-edicao.ts) | Plugin que roda o lint depois de cada edição do agente |
 | [`material/opencode.json`](material/opencode.json) | Permissões do projeto (Módulo Human-in-the-loop) |
 | [`material/revisao-do-plano.md`](material/revisao-do-plano.md) | As 4 perguntas antes de aprovar um plano |
-| [`docs/regras-de-negocio.md`](docs/regras-de-negocio.md) | As regras que todo o time segue |
+| [`docs/regras-de-negocio.md`](docs/regras-de-negocio.md) | As regras que valem sempre (RN), para pessoas e agentes |
+| [`docs/requisitos.md`](docs/requisitos.md) | Os requisitos de cada funcionalidade (RF), seus: o agente não lê |
 
 ## Comandos
 
