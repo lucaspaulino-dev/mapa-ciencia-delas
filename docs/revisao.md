@@ -20,7 +20,7 @@ Portão: `npm run verificar` → passou
 ### src/components/ScientistMap.vue
 - **Warning** `ScientistMap.vue:132` — o nome do marcador fica escondido com `clip-path` até o foco ou o mouse. Para leitor de tela está certo (o texto continua no botão), mas em tela de toque não há hover. Correção sugerida, fora deste plano: mostrar o nome também em `:active` ou uma legenda abaixo do mapa.
 - **Note** `ScientistMap.vue:33` — a imagem do mapa tem `alt=""` porque é decorativa: a informação está nos botões. Correto pela regra 2.
-- **Note** — nenhum `any`, nenhum `v-html`, nenhuma dependência nova. A lista vem por prop, sem cópia local (regra 5).
+- **Note** — nenhum `any`, nenhum `v-html`, nenhuma dependência nova. As cientistas vêm por prop, sem cópia local (regra 5).
 
 ### src/components/ScientistPopup.vue
 - **Note** `ScientistPopup.vue:25` — o Tab preso considera só `button` e `a[href]`. Basta para o conteúdo atual do card; se o card ganhar outro elemento focável, a lista precisa crescer.
