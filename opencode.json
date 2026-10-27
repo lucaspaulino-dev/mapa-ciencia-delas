@@ -8,7 +8,7 @@
     },
     {
       "action": "read",
-      "resource": "docs/regras-de-negocio.md",
+      "resource": "docs/requisitos.md",
       "effect": "deny"
     },
     {
@@ -29,6 +29,16 @@
     {
       "action": "edit",
       "resource": "docs/regras-de-negocio.md",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "docs/requisitos.md",
+      "effect": "deny"
+    },
+    {
+      "action": "edit",
+      "resource": "docs/requisitos.md",
       "effect": "deny"
     },
     {
@@ -73,7 +83,7 @@
     },
     {
       "action": "shell",
-      "resource": "*regras-de-negocio*",
+      "resource": "*requisitos*",
       "effect": "deny"
     },
     {

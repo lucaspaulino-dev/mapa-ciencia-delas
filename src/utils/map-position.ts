@@ -8,8 +8,8 @@ export type MapPosition = {
 }
 
 /**
- * Converte latitude e longitude na posição do marcador, com a conta da seção
- * "Mapa-múndi" de docs/regras-de-negocio.md.
+ * Converte latitude e longitude na posição do marcador, com a conta do requisito RF-04
+ * (projeção equirretangular).
  */
 export function toMapPosition({ lat, lng }: Pick<Birthplace, 'lat' | 'lng'>): MapPosition {
   const x = ((lng + 180) / 360) * 100

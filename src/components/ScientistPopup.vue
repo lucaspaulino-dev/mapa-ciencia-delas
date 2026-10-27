@@ -21,7 +21,7 @@ onMounted(() => {
   closeButton.value?.focus()
 })
 
-// Mantém o Tab dentro do popup enquanto ele está aberto (regra 8).
+// Mantém o Tab dentro do popup enquanto ele está aberto (RF-04).
 function trapFocus(event: KeyboardEvent) {
   const focusable = dialog.value?.querySelectorAll<HTMLElement>('button, a[href]')
   if (!focusable || focusable.length === 0) return
