@@ -1,11 +1,11 @@
 # Revisão: mapa-múndi no lugar da lista de cards
 
 Veredito: APROVADO
-Escopo: `git diff etapa-7` (projetar, ScientistPopup, ScientistMap, HomeView, remoção de ScientistList e testes)
+Escopo: `git diff etapa-7` (toMapPosition, ScientistPopup, ScientistMap, HomeView, remoção de ScientistList e testes)
 Portão: `npm run verificar` → passou
 
 ## Aceite
-- [x] Conta da seção "Mapa-múndi" — entregue em `src/utils/projetar.ts:15` e provado em `src/utils/__tests__/projetar.spec.ts:6`
+- [x] Conta da seção "Mapa-múndi" — entregue em `src/utils/map-position.ts:15` e provado em `src/utils/__tests__/map-position.spec.ts:6`
 - [x] Um marcador por cientista recebida — entregue em `src/components/ScientistMap.vue:38` e provado em `ScientistMap.spec.ts:20` e `:34`
 - [x] Marcador é `<button>` com nome e cidade — entregue em `src/components/ScientistMap.vue:44`
 - [x] Popup como diálogo modal com foco no "Fechar" — entregue em `src/components/ScientistPopup.vue:45` e `:21`, provado em `ScientistMap.spec.ts:45`
