@@ -33,12 +33,12 @@ Todo o resto desta skill **nenhuma ferramenta checa**. É responsabilidade de qu
 9. Todo link diz para onde leva, mesmo fora de contexto. Vários "Saiba mais" iguais na mesma página precisam de complemento para leitor de tela (`.u-visually-hidden`).
 10. Link que abre em nova aba: `target="_blank" rel="noopener noreferrer"` e aviso para leitor de tela.
 11. Nada de `div` clicável: ação é `<button>`, navegação é `<a>`/`RouterLink`.
-12. Mudança de resultado sem recarregar a página (como filtros) é anunciada com uma região `aria-live="polite"`.
+12. Mudança de resultado sem recarregar a página é anunciada com uma região `aria-live="polite"`.
 13. Detalhes de contraste, foco e teclado: leia `references/checklist-a11y.md`.
 
 ### Estado
-14. Dados e filtros das cientistas ficam em `useScientistsStore`. Componente recebe dados por props ou lê da store; nunca guarda cópia local da lista.
-15. Componentes de apresentação (card, popup, mapa) não importam a store; quem importa é a view ou o componente de filtro.
+14. Dados compartilhados entre componentes ficam numa store Pinia. Componente recebe dados por props ou lê da store; nunca guarda cópia local.
+15. Componentes de apresentação não importam a store; quem importa é a view ou o componente que muda o estado.
 
 ### CSS
 16. `<style scoped>` e nomes BEM: `bloco__elemento--modificador`.
