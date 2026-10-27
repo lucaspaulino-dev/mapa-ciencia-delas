@@ -3,7 +3,7 @@
 ## Roteiro
 
 1. **`README.md`**: faça a seção "Antes da aula" (Node 24, Git, OpenCode 2, `npm install`). Só siga quando `npm run verificar` passar.
-2. **`docs/regras-de-negocio.md`**: leia as 8 regras e a seção "Mapa-múndi". Os prompts citam as regras pelo número, e o produto final é o mapa.
+2. **`docs/regras-de-negocio.md`**: leia as 8 regras e a seção "Mapa-múndi". Elas são para você: o agente não lê este arquivo, e cada prompt já traz a regra de que precisa.
 3. **Este arquivo**: siga as etapas de 1 a 9, na ordem, com um commit no fim de cada uma.
 4. **`material/revisao-do-plano.md`**: responda às quatro perguntas antes de aprovar o plano da arquiteta, nas etapas 5 e 8.
 
@@ -34,7 +34,7 @@ Objetivo: criar o componente ScientistCard, que exibe uma cientista, e mostrá-l
 
 Contexto:
 - O tipo Scientist está em src/types/scientist.type.ts e os dados em src/data/scientists.ts.
-- A regra 4 de docs/regras-de-negocio.md descreve o que o card mostra.
+- O card mostra nome (como título), área, país, período e contribuição; o link "Saiba mais" leva à primeira fonte e diz a quem se refere.
 - Variáveis de cor e a classe .u-visually-hidden estão em src/assets/base.css.
 
 Faça:
@@ -65,19 +65,18 @@ No OpenCode, rode `/init`. Leia o `AGENTS.md` gerado e depois peça:
 ```text
 Objetivo: deixar o AGENTS.md curto e útil para qualquer tarefa neste projeto.
 
-Contexto: AGENTS.md, docs/regras-de-negocio.md, package.json.
+Contexto: AGENTS.md, package.json.
 
 Faça: garanta que o AGENTS.md tenha, nesta ordem e em menos de 40 linhas:
 1. Stack: Vue 3, TypeScript estrito, Pinia, Vue Router, Vitest. Sem bibliotecas de UI nem de CSS.
-2. Regras de negócio: apontar docs/regras-de-negocio.md (sem copiar o conteúdo).
-3. Convenções: código em inglês (componentes em PascalCase, tipos, dados e store); textos visíveis em português; tipos em src/types/<nome>.type.ts; dados e filtros em useScientistsStore; CSS scoped com BEM; imports com @/.
-4. Antes de concluir qualquer tarefa: npm run verificar.
-5. Testes: rode com npm run test:unit -- --run (sem --run o Vitest fica em modo watch).
-6. Proibido: any; adicionar dependência sem perguntar; editar docs/regras-de-negocio.md.
+2. Convenções: código em inglês (componentes em PascalCase, tipos, dados e store); textos visíveis em português; tipos em src/types/<nome>.type.ts; dados e filtros em useScientistsStore; CSS scoped com BEM; imports com @/.
+3. Antes de concluir qualquer tarefa: npm run verificar.
+4. Testes: rode com npm run test:unit -- --run (sem --run o Vitest fica em modo watch).
+5. Proibido: any; adicionar dependência sem perguntar.
 
-Restrições: não repita o que já está nas regras de negócio. Remova o que não vale para toda tarefa.
+Restrições: remova o que não vale para toda tarefa.
 
-Pronto quando: o arquivo tem as 6 seções e menos de 40 linhas.
+Pronto quando: o arquivo tem as 5 seções e menos de 40 linhas.
 ```
 
 Revise à mão o resultado. Regra de bolso: o que vale para toda tarefa fica no AGENTS.md; o que vale só para alguns tipos de tarefa vira skill.
@@ -96,7 +95,7 @@ cp -r material/skills/qualidade-vue .opencode/skills/
 Abra `.opencode/skills/qualidade-vue/SKILL.md`, leia e **acrescente uma regra sua** no fim da lista. Reinicie o OpenCode e, numa sessão nova:
 
 ```text
-Revise o src/components/ScientistCard.vue e liste os problemas por severidade (Blocker, Warning, Note), com arquivo e linha. Não edite nada ainda.
+Revise o src/components/ScientistCard.vue e liste os problemas por severidade (Blocker, Warning, Note), com arquivo e linha. Revise só o que o card precisa fazer hoje, sem sugerir mudanças para funcionalidades que ainda não existem. Não edite nada ainda.
 ```
 
 Observe na tela o bloco da ferramenta `skill`: o agente carregou a skill sozinho, porque a descrição dela diz quando usar. Depois:
@@ -126,7 +125,9 @@ Aperte **Tab** até o agente **plan** e peça:
 ```text
 Objetivo: planejar a store Pinia que vai guardar as cientistas e os filtros. Não implemente nada ainda.
 
-Contexto: docs/regras-de-negocio.md (regras 3 e 5), src/types/scientist.type.ts, src/data/scientists.ts, src/views/HomeView.vue.
+Contexto: src/types/scientist.type.ts, src/data/scientists.ts, src/views/HomeView.vue.
+
+Regras: a página inicial permite buscar por nome e filtrar por área e por país. Os dados e os filtros ficam na store, porque vários componentes usam os mesmos dados; nenhum componente guarda cópia da lista.
 
 O plano precisa cobrir:
 1. src/stores/scientists.ts com useScientistsStore no formato setup store: a lista; os filtros (busca, área, país); a lista filtrada; os países e as áreas disponíveis; ações para mudar e limpar cada filtro; e buscar uma cientista por id.
@@ -203,7 +204,7 @@ O mesmo fluxo das etapas 5 a 7, agora numa feature maior. Faça o commit da list
 Aperte **Tab** até a **arquiteta**:
 
 ```text
-Quero que um mapa-múndi substitua a lista de cards na página inicial: um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Ao clicar no marcador, abre um popup com o card da cientista. Siga a regra 8 de docs/regras-de-negocio.md e use o desenho e a conta da seção "Mapa-múndi" do mesmo arquivo. Faça o plano.
+Quero que um mapa-múndi substitua a lista de cards na página inicial: um marcador para cada cientista que passa pelos filtros, no local de nascimento dela. Ao clicar no marcador, abre um popup com o card da cientista. Cada marcador é um botão com o nome da cientista. O popup é um diálogo: o foco entra nele, Esc ou o botão "Fechar" o fecham, e o foco volta ao marcador. Os marcadores ficam numa lista (<ul>), para o leitor de tela anunciar quantas cientistas estão no mapa. Sem resultado nos filtros, o mapa mostra "Nenhuma cientista encontrada com esses filtros.". O desenho está em src/assets/world-map.svg, em projeção equirretangular: a posição do marcador é left = (lng + 180) / 360 e top = (90 - lat) / 180, em porcentagem da imagem, sem biblioteca de mapas. Faça o plano.
 ```
 
 Ela deve guardar o plano da listagem em `docs/planos/` antes de escrever o novo. Revise com as quatro perguntas de `material/revisao-do-plano.md` e aprove. Depois, **Tab** até a **coder**, um item por vez:
