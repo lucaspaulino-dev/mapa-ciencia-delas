@@ -9,9 +9,9 @@ Vue 3 + TypeScript estrito + Pinia + Vue Router + Vitest. Sem bibliotecas de UI 
 Leia `docs/regras-de-negocio.md` antes de mudar comportamento. Não copie as regras para cá.
 
 ## Convenções
-- Componentes em inglês e PascalCase (`ScientistCard.vue`); domínio em português (tipos, dados, store).
+- Código em inglês: componentes em PascalCase (`ScientistCard.vue`), tipos, dados e store (`Scientist`, `useScientistsStore`). Textos visíveis em português.
 - Tipos em `src/types/<nome>.type.ts`; dados em `src/data/`.
-- Dados e filtros das cientistas em `useCientistasStore` (`src/stores/cientistas.ts`).
+- Dados e filtros das cientistas em `useScientistsStore` (`src/stores/scientists.ts`).
 - `<script setup lang="ts">`, props tipadas com JSDoc, sem desestruturar `defineProps()`.
 - CSS `scoped` com BEM; cores e espaços das variáveis de `src/assets/base.css`.
 - Imports com `@/`, nunca `../`.
