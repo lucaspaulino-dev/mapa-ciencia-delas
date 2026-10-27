@@ -1,5 +1,5 @@
 // Pula para o ponto de controle de uma etapa do curso sem perder o seu trabalho.
-// Os pontos de controle são os ramos etapa-0 ... etapa-9 do repositório original.
+// Os pontos de controle são os ramos etapa-0 ... etapa-10 do repositório original.
 // Uso: npm run etapa            (lista as etapas)
 //      npm run etapa -- 5       (vai para a etapa 5)
 import { execFileSync } from 'node:child_process'
@@ -32,6 +32,7 @@ const DESCRICOES = [
   'revisão da listagem e correção dos Blockers',
   'mapa-múndi com popup (arquiteta, coder e reviewer)',
   'MCP do Context7 e do Playwright',
+  'auditoria: o produto contra os requisitos',
 ]
 
 const listar = () => {

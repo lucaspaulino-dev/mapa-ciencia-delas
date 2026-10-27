@@ -3,6 +3,9 @@
 ## O que muda para quem usa
 Na página inicial, quem visita busca uma cientista pelo nome, filtra por área e por país e sabe na hora quantas cientistas combinam com a busca.
 
+## Requisitos atendidos
+- RF-02, RF-03, RN-03
+
 ## Aceite
 - [x] Digitar no campo de busca filtra os cards pelo nome, sem diferenciar acentos — verifica: `npm run test:unit -- --run` (HomeView.spec)
 - [x] Os filtros de área e de país listam só valores que existem nos dados, com rótulo legível, e filtram os cards — verifica: `npm run test:unit -- --run` (ScientistFilters.spec)
