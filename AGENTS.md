@@ -1,6 +1,6 @@
 # AGENTS.md: Mapa Ciência Delas
 
-Aplicação Vue que lista mulheres cientistas com fonte para cada fato e interface acessível.
+Aplicação Vue que mostra, num mapa-múndi, mulheres cientistas com fonte para cada fato e interface acessível.
 
 ## Stack
 Vue 3 + TypeScript estrito + Pinia + Vue Router + Vitest. Sem bibliotecas de UI nem frameworks de CSS.
