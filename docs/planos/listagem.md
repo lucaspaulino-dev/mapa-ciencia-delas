@@ -1,5 +1,7 @@
 # Plano: listagem com busca e filtros na página inicial
 
+> Substituído pelo plano do mapa-múndi (etapa 8): `ScientistList` e o teste dele foram removidos, e a mensagem sem resultado passou para o `ScientistMap`.
+
 ## O que muda para quem usa
 Na página inicial, quem visita busca uma cientista pelo nome, filtra por área e por país e sabe na hora quantas cientistas combinam com a busca.
 

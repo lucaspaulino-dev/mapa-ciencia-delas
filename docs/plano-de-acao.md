@@ -22,7 +22,7 @@ Na página inicial, a lista de cards dá lugar ao mapa-múndi: quem visita vê o
 ## Decisões para aprovação humana
 - Marcadores como `<button>` HTML posicionados em porcentagem sobre a imagem `src/assets/mapa-mundi.svg`. Alternativa descartada: biblioteca de mapas (Leaflet), que exige dependência nova e internet para as imagens do mapa.
 - O popup é um componente próprio com `role="dialog"`, e não o `<dialog>` nativo. Alternativa descartada: `<dialog>` com `showModal()`, que o jsdom dos testes não implementa.
-- `ScientistMap` recebe a lista por prop; a HomeView passa `cientistasFiltradas`. Alternativa descartada: o mapa ler a store sozinho, o que esconderia de onde vem a lista.
+- `ScientistMap` recebe as cientistas por prop; a HomeView passa `cientistasFiltradas`. Alternativa descartada: o mapa ler a store sozinho, o que esconderia de onde vêm os dados.
 - `ScientistList` e o teste dele saem, porque nada mais os usa. O `ScientistCard` continua, agora dentro do popup.
 
 ## Tarefas
