@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import type { Cientista } from '@/types/cientista.type'
+import type { Scientist } from '@/types/scientist.type'
 import ScientistCard from '@/components/ScientistCard.vue'
 
 const props = defineProps<{
   /** Cientistas a exibir, já filtradas. */
-  cientistas: Cientista[]
+  scientists: Scientist[]
 }>()
 </script>
 
 <template>
-  <ul v-if="props.cientistas.length > 0" class="scientist-list">
-    <li v-for="cientista in props.cientistas" :key="cientista.id" class="scientist-list__item">
-      <ScientistCard :cientista="cientista" />
+  <ul v-if="props.scientists.length > 0" class="scientist-list">
+    <li v-for="scientist in props.scientists" :key="scientist.id" class="scientist-list__item">
+      <ScientistCard :scientist="scientist" />
     </li>
   </ul>
-  <p v-else class="scientist-list__vazia">Nenhuma cientista encontrada com esses filtros.</p>
+  <p v-else class="scientist-list__empty">Nenhuma cientista encontrada com esses filtros.</p>
 </template>
 
 <style scoped>
@@ -27,7 +27,7 @@ const props = defineProps<{
   list-style: none;
 }
 
-.scientist-list__vazia {
+.scientist-list__empty {
   padding: 2rem;
   text-align: center;
   color: var(--cor-texto-suave);
