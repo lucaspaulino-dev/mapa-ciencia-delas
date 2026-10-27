@@ -2,11 +2,13 @@
   "$schema": "https://opencode.ai/config.json",
   "permissions": [
     { "action": "read", "resource": "material/*", "effect": "deny" },
-    { "action": "read", "resource": "docs/regras-de-negocio.md", "effect": "deny" },
+    { "action": "read", "resource": "docs/requisitos.md", "effect": "deny" },
     { "action": "edit", "resource": "*", "effect": "ask" },
     { "action": "edit", "resource": "eslint.config.ts", "effect": "deny" },
     { "action": "edit", "resource": ".oxlintrc.json", "effect": "deny" },
     { "action": "edit", "resource": "docs/regras-de-negocio.md", "effect": "deny" },
+    { "action": "edit", "resource": "docs/requisitos.md", "effect": "deny" },
+    { "action": "edit", "resource": "docs/requisitos.md", "effect": "deny" },
     { "action": "shell", "resource": "*", "effect": "ask" },
     { "action": "shell", "resource": "npm run *", "effect": "allow" },
     { "action": "shell", "resource": "git status*", "effect": "allow" },
@@ -15,7 +17,7 @@
     { "action": "shell", "resource": "git push*", "effect": "deny" },
     { "action": "shell", "resource": "rm -rf*", "effect": "deny" },
     { "action": "webfetch", "resource": "*", "effect": "ask" },
-    { "action": "shell", "resource": "*regras-de-negocio*", "effect": "deny" },
+    { "action": "shell", "resource": "*requisitos*", "effect": "deny" },
     { "action": "shell", "resource": "*material/*", "effect": "deny" }
   ]
 }
