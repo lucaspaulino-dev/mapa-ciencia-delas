@@ -33,13 +33,13 @@ Agente: **build** (o padrão). Abra com `opencode` na raiz do projeto.
 Objetivo: criar o componente ScientistCard, que exibe uma cientista, e mostrá-lo na página inicial.
 
 Contexto:
-- O tipo Cientista está em src/types/cientista.type.ts e os dados em src/data/cientistas.ts.
+- O tipo Scientist está em src/types/scientist.type.ts e os dados em src/data/scientists.ts.
 - A regra 4 de docs/regras-de-negocio.md descreve o que o card mostra.
 - Variáveis de cor e a classe .u-visually-hidden estão em src/assets/base.css.
 
 Faça:
-1. src/components/ScientistCard.vue com <script setup lang="ts"> e uma prop `cientista` do tipo Cientista, documentada com JSDoc. Não desestruture o retorno de defineProps.
-2. HTML semântico: <article>; nome em <h3>; área com rótulo legível ("computacao" vira "Computação"); país; período ("1815–1852", ou "nascida em 1955" se não houver falecimento); contribuição; <img> só se a cientista tiver imagem, com o alt dos dados; link "Saiba mais" para a primeira fonte, abrindo em nova aba com rel="noopener noreferrer".
+1. src/components/ScientistCard.vue com <script setup lang="ts"> e uma prop `scientist` do tipo Scientist, documentada com JSDoc. Não desestruture o retorno de defineProps.
+2. HTML semântico: <article>; nome em <h3>; área com rótulo legível ("computing" vira "Computação"); país; período ("1815–1852", ou "nascida em 1955" se não houver falecimento); contribuição; <img> só se a cientista tiver imagem, com o alt dos dados; link "Saiba mais" para a primeira fonte, abrindo em nova aba com rel="noopener noreferrer".
 3. CSS scoped com nomes BEM (scientist-card__title etc.), usando as variáveis de base.css. Sem framework de CSS.
 4. src/components/__tests__/ScientistCard.spec.ts com Vitest e @vue/test-utils.
 5. Na src/views/HomeView.vue, mostre todas as cientistas com o card, dentro de uma <ul>.
@@ -70,7 +70,7 @@ Contexto: AGENTS.md, docs/regras-de-negocio.md, package.json.
 Faça: garanta que o AGENTS.md tenha, nesta ordem e em menos de 40 linhas:
 1. Stack: Vue 3, TypeScript estrito, Pinia, Vue Router, Vitest. Sem bibliotecas de UI nem de CSS.
 2. Regras de negócio: apontar docs/regras-de-negocio.md (sem copiar o conteúdo).
-3. Convenções: componentes em inglês e PascalCase; domínio (tipos, dados, store) em português; tipos em src/types/<nome>.type.ts; dados e filtros em useCientistasStore; CSS scoped com BEM; imports com @/.
+3. Convenções: código em inglês (componentes em PascalCase, tipos, dados e store); textos visíveis em português; tipos em src/types/<nome>.type.ts; dados e filtros em useScientistsStore; CSS scoped com BEM; imports com @/.
 4. Antes de concluir qualquer tarefa: npm run verificar.
 5. Testes: rode com npm run test:unit -- --run (sem --run o Vitest fica em modo watch).
 6. Proibido: any; adicionar dependência sem perguntar; editar docs/regras-de-negocio.md.
@@ -126,12 +126,12 @@ Aperte **Tab** até o agente **plan** e peça:
 ```text
 Objetivo: planejar a store Pinia que vai guardar as cientistas e os filtros. Não implemente nada ainda.
 
-Contexto: docs/regras-de-negocio.md (regras 3 e 5), src/types/cientista.type.ts, src/data/cientistas.ts, src/views/HomeView.vue.
+Contexto: docs/regras-de-negocio.md (regras 3 e 5), src/types/scientist.type.ts, src/data/scientists.ts, src/views/HomeView.vue.
 
 O plano precisa cobrir:
-1. src/stores/cientistas.ts com useCientistasStore no formato setup store: a lista; os filtros (busca, área, país); a lista filtrada; os países e as áreas disponíveis; ações para mudar e limpar cada filtro; e buscar uma cientista por id.
+1. src/stores/scientists.ts com useScientistsStore no formato setup store: a lista; os filtros (busca, área, país); a lista filtrada; os países e as áreas disponíveis; ações para mudar e limpar cada filtro; e buscar uma cientista por id.
 2. A busca por nome não diferencia maiúsculas, minúsculas nem acentos ("johanna dob" encontra "Johanna Döbereiner").
-3. src/stores/__tests__/cientistas.spec.ts cobrindo cada filtro, a combinação deles e a busca sem acento.
+3. src/stores/__tests__/scientists.spec.ts cobrindo cada filtro, a combinação deles e a busca sem acento.
 4. A HomeView passa a ler as cientistas da store, não mais de src/data.
 
 Pronto quando: o plano lista os arquivos, o que cada um faz e o teste que prova cada comportamento. Mostre o plano e espere o meu OK.
@@ -240,7 +240,7 @@ Acrescente ao `opencode.json`, no mesmo nível de `"permissions"`:
 Reinicie o OpenCode e confira com `opencode mcp list`.
 
 ```text
-Usando o context7, confira na documentação atual do Pinia como tipar uma setup store e diga se src/stores/cientistas.ts segue essa recomendação. Não edite nada; só relate.
+Usando o context7, confira na documentação atual do Pinia como tipar uma setup store e diga se src/stores/scientists.ts segue essa recomendação. Não edite nada; só relate.
 ```
 
 Demonstração (instrutor), com `npm run dev` rodando em outro terminal:
