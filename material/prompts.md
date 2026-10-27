@@ -2,7 +2,7 @@
 
 ## Roteiro
 
-1. **`README.md`**: faça a seção "Antes da aula" (Node 24, Git, OpenCode v1, `npm install`). Só siga quando `npm run verificar` passar.
+1. **`README.md`**: faça a seção "Antes da aula" (Node 24, Git, OpenCode 2, `npm install`). Só siga quando `npm run verificar` passar.
 2. **`docs/regras-de-negocio.md`**: leia as 8 regras e a seção "Mapa-múndi". Os prompts citam as regras pelo número, e o produto final é o mapa.
 3. **Este arquivo**: siga as etapas de 1 a 9, na ordem, com um commit no fim de cada uma.
 4. **`material/revisao-do-plano.md`**: responda às quatro perguntas antes de aprovar o plano da arquiteta, nas etapas 5 e 8.
@@ -54,7 +54,7 @@ Documentação: https://vuejs.org/guide/typescript/composition-api.html
 
 Enquanto o agente trabalha, anote: o modelo (`/models`), cada ferramenta chamada, o uso de contexto subindo e se ele corrigiu sozinho algum erro de teste. Depois: `npm run dev` e veja o resultado no navegador.
 
-Para provar o loop: `opencode session list` e `opencode export <id> --sanitize > sessao.json`. Cada parte `step-start` no JSON é uma nova chamada ao modelo; cada parte `tool` é uma chamada de ferramenta.
+Para provar o loop: `opencode session list` e `opencode session export <id> --sanitize > sessao.json`. Cada parte `step-start` no JSON é uma nova chamada ao modelo; cada parte `tool` é uma chamada de ferramenta.
 
 ---
 
@@ -226,12 +226,14 @@ Se vier REPROVADO, **Tab** até a **coder** e peça para corrigir os Blockers de
 
 ## Etapa 9: ferramentas externas (Módulo "MCP")
 
-Acrescente ao `opencode.json`, no mesmo nível de `"permission"`:
+Acrescente ao `opencode.json`, no mesmo nível de `"permissions"`:
 
 ```json
 "mcp": {
-  "context7": { "type": "remote", "url": "https://mcp.context7.com/mcp", "enabled": true },
-  "playwright": { "type": "local", "command": ["npx", "@playwright/mcp@latest"], "enabled": true }
+  "servers": {
+    "context7": { "type": "remote", "url": "https://mcp.context7.com/mcp" },
+    "playwright": { "type": "local", "command": ["npx", "@playwright/mcp@latest"] }
+  }
 }
 ```
 
