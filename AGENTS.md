@@ -5,9 +5,6 @@ Aplicação Vue que mostra, num mapa-múndi, mulheres cientistas com fonte para 
 ## Stack
 Vue 3 + TypeScript estrito + Pinia + Vue Router + Vitest. Sem bibliotecas de UI nem frameworks de CSS.
 
-## Regras de negócio
-Leia `docs/regras-de-negocio.md` antes de mudar comportamento. Não copie as regras para cá.
-
 ## Convenções
 - Código em inglês: componentes em PascalCase (`ScientistCard.vue`), tipos, dados e store (`Scientist`, `useScientistsStore`). Textos visíveis em português.
 - Tipos em `src/types/<nome>.type.ts`; dados em `src/data/`.
@@ -26,5 +23,5 @@ Rode com `npm run test:unit -- --run`. Sem `--run`, o Vitest fica em modo watch 
 ## Proibido
 - `any`.
 - Adicionar dependência sem perguntar.
-- Editar `docs/regras-de-negocio.md`, `eslint.config.ts` ou `.oxlintrc.json`.
+- Editar `eslint.config.ts` ou `.oxlintrc.json`.
 - Alterar um teste só para ele passar.

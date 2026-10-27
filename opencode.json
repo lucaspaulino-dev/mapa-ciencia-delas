@@ -7,6 +7,11 @@
       "effect": "deny"
     },
     {
+      "action": "read",
+      "resource": "docs/regras-de-negocio.md",
+      "effect": "deny"
+    },
+    {
       "action": "edit",
       "resource": "*",
       "effect": "ask"
