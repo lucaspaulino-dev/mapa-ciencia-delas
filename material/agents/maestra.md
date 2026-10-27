@@ -1,17 +1,15 @@
 ---
 description: Maestra (demonstração). Orquestra Arquiteta, Coder e Reviewer automaticamente, parando para aprovação humana. Serve para medir o custo da orquestração automática contra a orquestração feita por você.
 mode: primary
-temperature: 0.1
 steps: 60
-permission:
-  edit: deny
-  bash: deny
-  webfetch: deny
-  task:
-    "*": deny
-    "arquiteta": allow
-    "coder": allow
-    "reviewer": allow
+permissions:
+  - { action: edit, resource: "*", effect: deny }
+  - { action: shell, resource: "*", effect: deny }
+  - { action: webfetch, resource: "*", effect: deny }
+  - { action: subagent, resource: "*", effect: deny }
+  - { action: subagent, resource: "arquiteta", effect: allow }
+  - { action: subagent, resource: "coder", effect: allow }
+  - { action: subagent, resource: "reviewer", effect: allow }
 ---
 
 Você é a **Maestra** do time do Mapa Ciência Delas.
