@@ -1,20 +1,20 @@
 import { describe, it, expect } from 'vitest'
 
-import { cientistas } from '@/data/cientistas'
+import { scientists } from '@/data/scientists'
 
 // Cada teste aqui é uma regra de docs/regras-de-negocio.md.
 // Se uma cientista nova quebrar uma regra, o nome do teste diz qual cientista e qual regra.
 
-describe.each(cientistas)('$id', (cientista) => {
+describe.each(scientists)('$id', (scientist) => {
   it('regra 1: tem nome, país e contribuição preenchidos', () => {
-    expect(cientista.nome.trim()).not.toBe('')
-    expect(cientista.pais.trim()).not.toBe('')
-    expect(cientista.contribuicao.trim()).not.toBe('')
+    expect(scientist.name.trim()).not.toBe('')
+    expect(scientist.country.trim()).not.toBe('')
+    expect(scientist.contribution.trim()).not.toBe('')
   })
 
   it('regra 1: tem local de nascimento com cidade e coordenadas válidas', () => {
-    const { cidade, lat, lng } = cientista.localNascimento
-    expect(cidade.trim()).not.toBe('')
+    const { city, lat, lng } = scientist.birthplace
+    expect(city.trim()).not.toBe('')
     expect(lat).toBeGreaterThanOrEqual(-90)
     expect(lat).toBeLessThanOrEqual(90)
     expect(lng).toBeGreaterThanOrEqual(-180)
@@ -22,34 +22,34 @@ describe.each(cientistas)('$id', (cientista) => {
   })
 
   it('regra 1: a contribuição tem até 280 caracteres', () => {
-    expect(cientista.contribuicao.length).toBeLessThanOrEqual(280)
+    expect(scientist.contribution.length).toBeLessThanOrEqual(280)
   })
 
   it('regras 1 e 7: tem ao menos uma fonte, todas com título e URL https', () => {
-    expect(cientista.fontes.length).toBeGreaterThan(0)
-    expect(cientista.fontes.every((f) => f.titulo.trim() !== '')).toBe(true)
-    expect(cientista.fontes.every((f) => f.url.startsWith('https://'))).toBe(true)
+    expect(scientist.sources.length).toBeGreaterThan(0)
+    expect(scientist.sources.every((f) => f.title.trim() !== '')).toBe(true)
+    expect(scientist.sources.every((f) => f.url.startsWith('https://'))).toBe(true)
   })
 
   it('regra 2: se tem imagem, o texto alternativo é descritivo', () => {
-    const alt = cientista.imagem?.alt.trim().toLowerCase() ?? 'sem imagem: regra não se aplica'
+    const alt = scientist.image?.alt.trim().toLowerCase() ?? 'sem imagem: regra não se aplica'
     expect(alt.length).toBeGreaterThan(10)
-    expect(['foto', 'imagem', 'image', 'photo']).not.toContain(alt)
+    expect(['foto', 'image', 'image', 'photo']).not.toContain(alt)
   })
 
   it('o período é coerente', () => {
-    const { nascimento, falecimento } = cientista.periodo
-    expect(falecimento ?? nascimento + 1).toBeGreaterThan(nascimento)
+    const { birth, death } = scientist.period
+    expect(death ?? birth + 1).toBeGreaterThan(birth)
   })
 
   it('o id está em formato de URL', () => {
-    expect(cientista.id).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/)
+    expect(scientist.id).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/)
   })
 })
 
 describe('lista de cientistas', () => {
   it('não tem ids repetidos', () => {
-    const ids = cientistas.map((c) => c.id)
+    const ids = scientists.map((c) => c.id)
     expect(new Set(ids).size).toBe(ids.length)
   })
 })
