@@ -54,7 +54,7 @@ Documentação: https://vuejs.org/guide/typescript/composition-api.html
 
 Enquanto o agente trabalha, anote: o modelo (`/models`), cada ferramenta chamada, o uso de contexto subindo e se ele corrigiu sozinho algum erro de teste. Depois: `npm run dev` e veja o resultado no navegador.
 
-Para provar o loop: `opencode session list` e `opencode session export <id> --sanitize > sessao.json`. Cada parte `step-start` no JSON é uma nova chamada ao modelo; cada parte `tool` é uma chamada de ferramenta.
+Para provar o loop: `opencode session list` e `opencode session export <id> --sanitize > sessao.json`. Em `messages`, cada item com `"type": "assistant"` é uma nova chamada ao modelo, e cada item de `content` com `"type": "tool"` é uma chamada de ferramenta. O loop continua enquanto `finish` é `"tool-calls"` e termina no `"stop"`.
 
 ---
 
