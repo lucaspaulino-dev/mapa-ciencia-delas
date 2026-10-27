@@ -3,10 +3,10 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <a class="app__pular" href="#conteudo">Pular para o conteúdo</a>
+  <a class="app__skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <header class="app__cabecalho">
-    <RouterLink class="app__marca" to="/">Mapa Ciência Delas</RouterLink>
+  <header class="app__header">
+    <RouterLink class="app__brand" to="/">Mapa Ciência Delas</RouterLink>
     <nav aria-label="Principal">
       <ul class="app__menu">
         <li><RouterLink to="/">Início</RouterLink></li>
@@ -15,17 +15,17 @@ import { RouterLink, RouterView } from 'vue-router'
     </nav>
   </header>
 
-  <main id="conteudo" class="app__conteudo" tabindex="-1">
+  <main id="conteudo" class="app__content" tabindex="-1">
     <RouterView />
   </main>
 
-  <footer class="app__rodape">
+  <footer class="app__footer">
     <p>Projeto do mini curso "Do Prompt ao Produto": SNCT 2026, IFSP Campus Birigui.</p>
   </footer>
 </template>
 
 <style scoped>
-.app__pular {
+.app__skip {
   position: absolute;
   left: var(--espaco);
   top: -3rem;
@@ -35,11 +35,11 @@ import { RouterLink, RouterView } from 'vue-router'
   border-radius: var(--raio);
 }
 
-.app__pular:focus {
+.app__skip:focus {
   top: var(--espaco);
 }
 
-.app__cabecalho {
+.app__header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -50,7 +50,7 @@ import { RouterLink, RouterView } from 'vue-router'
   border-bottom: 1px solid var(--cor-borda);
 }
 
-.app__marca {
+.app__brand {
   font-weight: 700;
   font-size: 1.25rem;
   text-decoration: none;
@@ -64,13 +64,13 @@ import { RouterLink, RouterView } from 'vue-router'
   list-style: none;
 }
 
-.app__conteudo {
+.app__content {
   max-width: 72rem;
   margin: 0 auto;
   padding: calc(var(--espaco) * 2);
 }
 
-.app__rodape {
+.app__footer {
   padding: var(--espaco) calc(var(--espaco) * 2);
   color: var(--cor-texto-suave);
   font-size: 0.875rem;
