@@ -1,61 +1,61 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue'
 
-import type { Cientista } from '@/types/cientista.type'
+import type { Scientist } from '@/types/scientist.type'
 import ScientistPopup from '@/components/ScientistPopup.vue'
-import mapaMundi from '@/assets/mapa-mundi.svg'
-import { projetar } from '@/utils/projetar'
+import worldMap from '@/assets/world-map.svg'
+import { toMapPosition } from '@/utils/map-position'
 
 const props = defineProps<{
   /** Cientistas a marcar no mapa, já filtradas. */
-  cientistas: Cientista[]
+  scientists: Scientist[]
 }>()
 
-const selecionada = ref<Cientista | null>(null)
+const selected = ref<Scientist | null>(null)
 
-function abrir(cientista: Cientista) {
-  selecionada.value = cientista
+function open(scientist: Scientist) {
+  selected.value = scientist
 }
 
 // Ao fechar, o foco volta ao marcador que abriu o popup (regra 8).
-async function fechar() {
-  const id = selecionada.value?.id
-  selecionada.value = null
+async function close() {
+  const id = selected.value?.id
+  selected.value = null
   await nextTick()
-  if (id) document.getElementById(`marcador-${id}`)?.focus()
+  if (id) document.getElementById(`marker-${id}`)?.focus()
 }
 </script>
 
 <template>
-  <section class="scientist-map" aria-labelledby="mapa-titulo">
-    <h2 id="mapa-titulo" class="scientist-map__title">Onde elas nasceram</h2>
+  <section class="scientist-map" aria-labelledby="map-title">
+    <h2 id="map-title" class="scientist-map__title">Onde elas nasceram</h2>
     <div class="scientist-map__canvas">
-      <img class="scientist-map__image" :src="mapaMundi" alt="" />
-      <p v-if="props.cientistas.length === 0" class="scientist-map__vazio">
+      <img class="scientist-map__image" :src="worldMap" alt="" />
+      <p v-if="props.scientists.length === 0" class="scientist-map__empty">
         Nenhuma cientista encontrada com esses filtros.
       </p>
       <ul v-else class="scientist-map__markers">
         <li
-          v-for="cientista in props.cientistas"
-          :key="cientista.id"
+          v-for="scientist in props.scientists"
+          :key="scientist.id"
           class="scientist-map__marker"
-          :style="projetar(cientista.localNascimento)"
+          :style="toMapPosition(scientist.birthplace)"
         >
           <button
-            :id="`marcador-${cientista.id}`"
+            :id="`marker-${scientist.id}`"
             type="button"
             class="scientist-map__button"
-            @click="abrir(cientista)"
+            @click="open(scientist)"
           >
             <span class="scientist-map__label">
-              {{ cientista.nome }}
-              <span class="u-visually-hidden">, nascida em {{ cientista.localNascimento.cidade }}</span>
+              {{ scientist.name }}
+              <span class="u-visually-hidden">, nascida em {{ scientist.birthplace.city }}</span>
             </span>
           </button>
         </li>
       </ul>
     </div>
-    <ScientistPopup v-if="selecionada" :cientista="selecionada" @fechar="fechar" />
+    <ScientistPopup v-if="selected" :scientist="selected" @close="close" />
   </section>
 </template>
 
@@ -80,7 +80,7 @@ async function fechar() {
   height: auto;
 }
 
-.scientist-map__vazio {
+.scientist-map__empty {
   position: absolute;
   top: 50%;
   left: 50%;

@@ -1,62 +1,62 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 
-import type { Cientista } from '@/types/cientista.type'
+import type { Scientist } from '@/types/scientist.type'
 import ScientistCard from '@/components/ScientistCard.vue'
 
 const props = defineProps<{
   /** Cientista mostrada no popup. */
-  cientista: Cientista
+  scientist: Scientist
 }>()
 
 const emit = defineEmits<{
   /** Pedido para fechar o popup (botão Fechar, Esc ou clique fora). */
-  fechar: []
+  close: []
 }>()
 
-const dialogo = ref<HTMLElement | null>(null)
-const botaoFechar = ref<HTMLButtonElement | null>(null)
+const dialog = ref<HTMLElement | null>(null)
+const closeButton = ref<HTMLButtonElement | null>(null)
 
 onMounted(() => {
-  botaoFechar.value?.focus()
+  closeButton.value?.focus()
 })
 
 // Mantém o Tab dentro do popup enquanto ele está aberto (regra 8).
-function prenderFoco(evento: KeyboardEvent) {
-  const focaveis = dialogo.value?.querySelectorAll<HTMLElement>('button, a[href]')
-  if (!focaveis || focaveis.length === 0) return
-  const primeiro = focaveis[0]
-  const ultimo = focaveis[focaveis.length - 1]
-  if (evento.shiftKey && document.activeElement === primeiro) {
-    evento.preventDefault()
-    ultimo?.focus()
-  } else if (!evento.shiftKey && document.activeElement === ultimo) {
-    evento.preventDefault()
-    primeiro?.focus()
+function trapFocus(event: KeyboardEvent) {
+  const focusable = dialog.value?.querySelectorAll<HTMLElement>('button, a[href]')
+  if (!focusable || focusable.length === 0) return
+  const first = focusable[0]
+  const last = focusable[focusable.length - 1]
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault()
+    last?.focus()
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault()
+    first?.focus()
   }
 }
 </script>
 
 <template>
-  <div class="scientist-popup" @click.self="emit('fechar')">
+  <div class="scientist-popup" @click.self="emit('close')">
     <div
-      ref="dialogo"
+      ref="dialog"
       class="scientist-popup__dialog"
       role="dialog"
       aria-modal="true"
-      :aria-label="`Sobre ${props.cientista.nome}`"
-      @keydown.esc="emit('fechar')"
-      @keydown.tab="prenderFoco"
+      :aria-label="`Sobre ${props.scientist.name}`"
+      @keydown.esc="emit('close')"
+      @keydown.tab="trapFocus"
     >
       <button
-        ref="botaoFechar"
+        ref="closeButton"
         type="button"
         class="scientist-popup__close"
-        @click="emit('fechar')"
+        @click="emit('close')"
       >
         Fechar
       </button>
-      <ScientistCard :cientista="props.cientista" />
+      <ScientistCard :scientist="props.scientist" />
     </div>
   </div>
 </template>
