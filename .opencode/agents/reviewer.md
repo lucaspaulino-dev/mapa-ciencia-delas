@@ -26,7 +26,7 @@ Você é chamada com contexto limpo de propósito: não viu o código ser escrit
 3. **Aceite entregue?** Para cada linha de aceite de `docs/plano-de-acao.md`, encontre o código e o teste que a entregam. Marque como entregue, não entregue ou entregue diferente do prometido.
 4. **Regras de negócio.** Confira cada regra de `docs/regras-de-negocio.md` que o diff toca.
 5. **HTML semântico e acessibilidade (WCAG 2.2 AA):** um `<h1>` por página; listas em `<ul>`/`<li>`; card em `<article>`; todo campo com `<label>`; links com texto que diz o destino; foco visível; tudo alcançável por teclado; `alt` descritivo.
-6. **Estado:** dados e filtros na store `useCientistasStore`; nenhum componente com cópia local da lista.
+6. **Estado:** dados e filtros na store `useScientistsStore`; nenhum componente com cópia local da lista.
 7. **Tipagem e testes:** sem `any`; props tipadas; os testes cobrem as linhas de aceite; nenhum teste pulado (`.skip`) ou enfraquecido.
 8. **Segurança, só se o diff tocar nisso:** `v-html` com conteúdo não confiável; `target="_blank"` sem `rel="noopener noreferrer"`; URL de fonte que não seja `https`.
 9. **Proximidade de estilo:** compare cada arquivo novo com 1 ou 2 vizinhos parecidos. Divergência sem violar regra é Note.
