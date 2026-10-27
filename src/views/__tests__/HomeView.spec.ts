@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 
 import HomeView from '@/views/HomeView.vue'
-import { cientistas } from '@/data/cientistas'
+import { scientists } from '@/data/scientists'
 
 describe('HomeView', () => {
   beforeEach(() => {
@@ -12,9 +12,9 @@ describe('HomeView', () => {
 
   it('mostra um marcador por cientista no mapa e anuncia a contagem', () => {
     const wrapper = mount(HomeView)
-    expect(wrapper.findAll('.scientist-map__button')).toHaveLength(cientistas.length)
+    expect(wrapper.findAll('.scientist-map__button')).toHaveLength(scientists.length)
     expect(wrapper.find('[aria-live="polite"]').text()).toBe(
-      `${cientistas.length} cientistas encontradas`,
+      `${scientists.length} cientistas encontradas`,
     )
   })
 
@@ -24,17 +24,17 @@ describe('HomeView', () => {
 
   it('a busca sem acento reduz os marcadores e a contagem acompanha', async () => {
     const wrapper = mount(HomeView)
-    await wrapper.find('#filtro-busca').setValue('johanna dob')
+    await wrapper.find('#filter-search').setValue('johanna dob')
 
-    const marcadores = wrapper.findAll('.scientist-map__button')
-    expect(marcadores).toHaveLength(1)
-    expect(marcadores[0]?.text()).toContain('Johanna Döbereiner')
+    const markers = wrapper.findAll('.scientist-map__button')
+    expect(markers).toHaveLength(1)
+    expect(markers[0]?.text()).toContain('Johanna Döbereiner')
     expect(wrapper.find('[aria-live="polite"]').text()).toBe('1 cientista encontrada')
   })
 
   it('sem resultado, avisa em texto', async () => {
     const wrapper = mount(HomeView)
-    await wrapper.find('#filtro-busca').setValue('ninguém com esse nome')
+    await wrapper.find('#filter-search').setValue('ninguém com esse nome')
 
     expect(wrapper.findAll('.scientist-map__button')).toHaveLength(0)
     expect(wrapper.text()).toContain('Nenhuma cientista encontrada com esses filtros.')
