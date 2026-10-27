@@ -1,5 +1,12 @@
 # Prompts do curso, etapa por etapa
 
+## Roteiro
+
+1. **`README.md`**: faça a seção "Antes da aula" (Node 24, Git, OpenCode v1, `npm install`). Só siga quando `npm run verificar` passar.
+2. **`docs/regras-de-negocio.md`**: leia as 8 regras e a seção "Mapa-múndi". Os prompts citam as regras pelo número, e o produto final é o mapa.
+3. **Este arquivo**: siga as etapas de 1 a 9, na ordem, com um commit no fim de cada uma.
+4. **`material/revisao-do-plano.md`**: responda às quatro perguntas antes de aprovar o plano da arquiteta, nas etapas 5 e 8.
+
 Todos os prompts seguem a mesma estrutura, que é o próprio método do curso:
 
 - **Objetivo:** o que deve existir no fim.
