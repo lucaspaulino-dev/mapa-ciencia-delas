@@ -1,14 +1,14 @@
 # AGENTS.md: Mapa Ciência Delas
 
-Aplicação Vue que mostra, num mapa-múndi, mulheres cientistas com fonte para cada fato e interface acessível.
+Aplicação Vue que mostra mulheres cientistas com fonte para cada fato e interface acessível.
 
 ## Stack
 Vue 3 + TypeScript estrito + Pinia + Vue Router + Vitest. Sem bibliotecas de UI nem frameworks de CSS.
 
 ## Convenções
-- Código em inglês: componentes em PascalCase (`ScientistCard.vue`), tipos, dados e store (`Scientist`, `useScientistsStore`). Textos visíveis em português.
+- Código em inglês: componentes em PascalCase (`ScientistCard.vue`), tipos, dados e store (`Scientist`). Textos visíveis em português.
 - Tipos em `src/types/<nome>.type.ts`; dados em `src/data/`.
-- Dados e filtros das cientistas em `useScientistsStore` (`src/stores/scientists.ts`).
+- Dados compartilhados entre componentes numa store Pinia em `src/stores/`.
 - `<script setup lang="ts">`, props tipadas com JSDoc, sem desestruturar `defineProps()`.
 - CSS `scoped` com BEM; cores e espaços das variáveis de `src/assets/base.css`.
 - Imports com `@/`, nunca `../`.
