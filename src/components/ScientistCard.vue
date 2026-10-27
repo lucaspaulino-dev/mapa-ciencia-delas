@@ -1,39 +1,39 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import type { Cientista } from '@/types/cientista.type'
-import { rotuloArea } from '@/data/areas'
+import type { Scientist } from '@/types/scientist.type'
+import { areaLabel } from '@/data/areas'
 
 const props = defineProps<{
   /** Cientista exibida no card. */
-  cientista: Cientista
+  scientist: Scientist
 }>()
 
-const area = computed(() => rotuloArea[props.cientista.area])
+const area = computed(() => areaLabel[props.scientist.area])
 
-const periodo = computed(() => {
-  const { nascimento, falecimento } = props.cientista.periodo
-  return falecimento === undefined ? `nascida em ${nascimento}` : `${nascimento}–${falecimento}`
+const period = computed(() => {
+  const { birth, death } = props.scientist.period
+  return death === undefined ? `nascida em ${birth}` : `${birth}–${death}`
 })
 </script>
 
 <template>
   <article class="scientist-card">
     <img
-      v-if="props.cientista.imagem"
+      v-if="props.scientist.image"
       class="scientist-card__image"
-      :src="props.cientista.imagem.src"
-      :alt="props.cientista.imagem.alt"
+      :src="props.scientist.image.src"
+      :alt="props.scientist.image.alt"
     />
-    <h3 class="scientist-card__title">{{ props.cientista.nome }}</h3>
+    <h3 class="scientist-card__title">{{ props.scientist.name }}</h3>
     <p class="scientist-card__meta">
       <span class="scientist-card__area">{{ area }}</span>
-      · {{ props.cientista.pais }} · {{ periodo }}
+      · {{ props.scientist.country }} · {{ period }}
     </p>
-    <p class="scientist-card__contribution">{{ props.cientista.contribuicao }}</p>
+    <p class="scientist-card__contribution">{{ props.scientist.contribution }}</p>
     <a
       class="scientist-card__link"
-      :href="props.cientista.fontes[0].url"
+      :href="props.scientist.sources[0].url"
       target="_blank"
       rel="noopener noreferrer"
     >

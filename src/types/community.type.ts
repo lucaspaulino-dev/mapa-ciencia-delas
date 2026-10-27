@@ -1,7 +1,7 @@
-export interface Comunidade {
-  nome: string
+export interface Community {
+  name: string
   /** O que a comunidade oferece, em uma frase curta. */
-  foco: string
+  focus: string
   /** Site oficial, quando existe. */
   url?: string
 }

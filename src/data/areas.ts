@@ -1,12 +1,12 @@
-import type { AreaCiencia } from '@/types/cientista.type'
+import type { ScienceArea } from '@/types/scientist.type'
 
-export const rotuloArea: Record<AreaCiencia, string> = {
-  computacao: 'Computação',
-  matematica: 'Matemática',
-  fisica: 'Física',
-  quimica: 'Química',
-  biologia: 'Biologia',
-  medicina: 'Medicina',
-  engenharia: 'Engenharia',
-  outras: 'Outras áreas',
+export const areaLabel: Record<ScienceArea, string> = {
+  computing: 'Computação',
+  mathematics: 'Matemática',
+  physics: 'Física',
+  chemistry: 'Química',
+  biology: 'Biologia',
+  medicine: 'Medicina',
+  engineering: 'Engenharia',
+  other: 'Outras áreas',
 }
