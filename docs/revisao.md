@@ -16,7 +16,7 @@ Portão: `npm run verificar` → passou
 ## Achados
 
 ### src/components/ScientistFilters.vue
-- **Blocker** `ScientistFilters.vue:40` — `<label>Área</label>` sem `for="filter-area"`. Clicar no rótulo não foca o campo e o leitor de tela anuncia o select sem nome. Viola a regra 6 (rótulo em todo campo) e a linha de aceite 3. Correção sugerida: associar o rótulo ao `id` do select.
+- **Blocker** `ScientistFilters.vue:40` — `<label>Área</label>` sem `for="filter-area"`. Clicar no rótulo não foca o campo e o leitor de tela anuncia o select sem nome. Viola a RN-03 (rótulo em todo campo) e a linha de aceite 3. Correção sugerida: associar o rótulo ao `id` do select.
 - **Blocker** `ScientistFilters.vue:50` — mesmo problema no rótulo "País" (`filter-country`).
 - **Note** — nenhum `any`, nenhum `v-html`, nenhum `target="_blank"` novo. A busca usa `<form role="search">` com `@submit.prevent`, correto.
 
@@ -27,7 +27,7 @@ Portão: `npm run verificar` → passou
 - **Note** — lista em `<ul>`/`<li>`, card em `<article>`, estado vazio em texto. Componente de apresentação não importa a store, como pede a skill `qualidade-vue`.
 
 ### src/views/HomeView.vue
-- **Note** — um único `<h1>`; contagem no singular e no plural correta; lista lida de `filteredScientists`, sem cópia local (regra 5).
+- **Note** — um único `<h1>`; contagem no singular e no plural correta; lista lida de `filteredScientists`, sem cópia local (decisão técnica da store).
 
 ---
 
