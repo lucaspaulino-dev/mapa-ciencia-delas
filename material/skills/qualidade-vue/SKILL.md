@@ -38,7 +38,7 @@ Todo o resto desta skill **nenhuma ferramenta checa**. É responsabilidade de qu
 
 ### Estado
 14. Dados e filtros das cientistas ficam em `useCientistasStore`. Componente recebe dados por props ou lê da store; nunca guarda cópia local da lista.
-15. Componentes de apresentação (card, lista) não importam a store; quem importa é a view ou o componente de filtro.
+15. Componentes de apresentação (card, popup, mapa) não importam a store; quem importa é a view ou o componente de filtro.
 
 ### CSS
 16. `<style scoped>` e nomes BEM: `bloco__elemento--modificador`.
