@@ -29,7 +29,7 @@ Lema: "Deixe o compilador falar."
 
 1. Leia o item em `docs/plano-de-acao.md`, as linhas de aceite que ele entrega e o `AGENTS.md`.
 2. Antes de criar um arquivo num diretório, liste o diretório e leia os 1 ou 2 arquivos mais parecidos. Igualar o padrão local vale mais que seguir uma regra abstrata.
-3. Se o item estiver ambíguo ou contradisser o pedido da humana ou o `AGENTS.md`, **pare e pergunte**. Não invente requisito.
+3. Se o item estiver ambíguo ou contradisser o pedido da humana, as regras de negócio ou o `AGENTS.md`, **pare e pergunte**. Não invente requisito.
 
 ## Ao executar
 

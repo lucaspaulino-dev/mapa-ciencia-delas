@@ -17,7 +17,7 @@ function open(scientist: Scientist) {
   selected.value = scientist
 }
 
-// Ao fechar, o foco volta ao marcador que abriu o popup (regra 8).
+// Ao fechar, o foco volta ao marcador que abriu o popup (RF-04).
 async function close() {
   const id = selected.value?.id
   selected.value = null

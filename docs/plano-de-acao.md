@@ -3,8 +3,11 @@
 ## O que muda para quem usa
 Na página inicial, a lista de cards dá lugar ao mapa-múndi: quem visita vê onde cada cientista nasceu e, ao clicar num marcador, lê o card dela num popup, sem sair da página.
 
+## Requisitos atendidos
+- RF-04, RN-03
+
 ## Aceite
-- [x] A conta da seção "Mapa-múndi" das regras converte latitude e longitude em posição no mapa — verifica: `npm run test:unit -- --run` (map-position.spec)
+- [x] A conta do requisito RF-04 converte latitude e longitude em posição no mapa — verifica: `npm run test:unit -- --run` (map-position.spec)
 - [x] O mapa mostra um marcador por cientista recebida, no local de nascimento — verifica: `npm run test:unit -- --run` (ScientistMap.spec)
 - [x] Cada marcador é um `<button>` com o nome da cientista e a cidade de nascimento — verifica: `npm run test:unit -- --run` (ScientistMap.spec)
 - [x] Ativar o marcador abre um popup com `role="dialog"`, `aria-modal="true"` e o card da cientista, com o foco no botão "Fechar" — verifica: `npm run test:unit -- --run` (ScientistMap.spec)

@@ -43,7 +43,7 @@ describe('ScientistCard', () => {
     expect(link.attributes('rel')).toBe('noopener noreferrer')
   })
 
-  it('o link diz a quem se refere e avisa que abre em nova aba (regra 4)', () => {
+  it('o link diz a quem se refere e avisa que abre em nova aba (RF-01)', () => {
     const wrapper = mount(ScientistCard, { props: { scientist: ada } })
     const linkText = wrapper.find('a').text().replace(/\s+/g, ' ')
     expect(linkText).toBe('Saiba mais sobre Ada Lovelace (abre em nova aba)')
