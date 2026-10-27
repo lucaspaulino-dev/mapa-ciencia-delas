@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import { comunidades } from '@/data/comunidades'
+import { communities } from '@/data/communities'
 </script>
 
 <template>
-  <section class="communities" aria-labelledby="comunidades-titulo">
-    <h1 id="comunidades-titulo" class="communities__titulo">Continue a história</h1>
-    <p class="communities__texto">
+  <section class="communities" aria-labelledby="communities-title">
+    <h1 id="communities-title" class="communities__title">Continue a história</h1>
+    <p class="communities__text">
       Ada, Grace, Bertha e Johanna abriram caminho. Estas comunidades ajudam quem quer seguir por
       ele.
     </p>
 
-    <ul class="communities__lista">
-      <li v-for="comunidade in comunidades" :key="comunidade.nome" class="communities__item">
-        <h2 class="communities__nome">{{ comunidade.nome }}</h2>
-        <p class="communities__foco">{{ comunidade.foco }}</p>
+    <ul class="communities__list">
+      <li v-for="community in communities" :key="community.name" class="communities__item">
+        <h2 class="communities__name">{{ community.name }}</h2>
+        <p class="communities__focus">{{ community.focus }}</p>
         <a
-          v-if="comunidade.url"
+          v-if="community.url"
           class="communities__link"
-          :href="comunidade.url"
+          :href="community.url"
           target="_blank"
           rel="noopener noreferrer"
         >
           Visitar o site<span class="u-visually-hidden">
-            de {{ comunidade.nome }} (abre em nova aba)</span
+            de {{ community.name }} (abre em nova aba)</span
           >
         </a>
       </li>
@@ -31,17 +31,17 @@ import { comunidades } from '@/data/comunidades'
 </template>
 
 <style scoped>
-.communities__titulo {
+.communities__title {
   margin-top: 0;
   color: var(--cor-primaria);
 }
 
-.communities__texto {
+.communities__text {
   max-width: 40rem;
   font-size: 1.125rem;
 }
 
-.communities__lista {
+.communities__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
   gap: 1.5rem;
@@ -60,13 +60,13 @@ import { comunidades } from '@/data/comunidades'
   border-radius: var(--raio);
 }
 
-.communities__nome {
+.communities__name {
   margin: 0;
   font-size: 1.25rem;
   color: var(--cor-primaria);
 }
 
-.communities__foco {
+.communities__focus {
   flex: 1;
   margin: 0;
 }
