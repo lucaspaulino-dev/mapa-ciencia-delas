@@ -14,6 +14,8 @@
     { "action": "shell", "resource": "git log*", "effect": "allow" },
     { "action": "shell", "resource": "git push*", "effect": "deny" },
     { "action": "shell", "resource": "rm -rf*", "effect": "deny" },
-    { "action": "webfetch", "resource": "*", "effect": "ask" }
+    { "action": "webfetch", "resource": "*", "effect": "ask" },
+    { "action": "shell", "resource": "*regras-de-negocio*", "effect": "deny" },
+    { "action": "shell", "resource": "*material/*", "effect": "deny" }
   ]
 }
